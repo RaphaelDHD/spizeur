@@ -1,6 +1,7 @@
 package com.example.spizeur
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -11,6 +12,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import com.example.spizeur.databinding.ActivityMainBinding
+import com.example.spizeur.models.services.ApiClient
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
+        executeCall()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -35,6 +41,7 @@ class MainActivity : AppCompatActivity() {
                 .setAnchorView(R.id.fab)
                 .setAction("Action", null).show()
         }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -58,4 +65,28 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
+
+    private fun executeCall() {
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                val response = ApiClient.apiService.getProductById(1)
+
+                if (response.isSuccessful && response.body() != null) {
+
+                    val content = response.body()
+                    Log.e("API_TEST_CORRECT", content.toString())
+
+
+
+                } else {
+                    Log.e("API_TEST", "Reponse pas correcte")
+                }
+
+            } catch (e: Exception) {
+                Log.e("API_TEST", "${e.message}")
+            }
+        }
+    }
+
+
 }
