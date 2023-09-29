@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
-        executeCall()
+        executeSecondCall()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -80,6 +80,28 @@ class MainActivity : AppCompatActivity() {
 
                 } else {
                     Log.e("API_TEST", "Reponse pas correcte")
+                }
+
+            } catch (e: Exception) {
+                Log.e("API_TEST", "${e.message}")
+            }
+        }
+    }
+
+    private fun executeSecondCall() {
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                val response = ApiClient.apiService.getProductByKeyWord("Laptop")
+
+                if (response.isSuccessful && response.body() != null) {
+
+                    val content = response.body()
+                    Log.e("API_TEST_CORRECT", "OK")
+
+
+
+                } else {
+                    Log.e("API_TEST", response.message().toString())
                 }
 
             } catch (e: Exception) {
