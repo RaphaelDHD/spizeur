@@ -10,7 +10,7 @@ import retrofit2.http.Query
 interface ApiService {
 
     @GET("user")
-    suspend fun getUsers(): Response<MutableList<User>>
+    suspend fun getUsers(): Response<User>
 
     @GET("product/search")
     suspend fun getProductByKeyWord(@Query("q") type : String): Response<Product>

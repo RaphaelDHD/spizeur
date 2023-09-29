@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
         executeSecondCall()
+        //executeUserCall()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -110,5 +111,26 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun executeUserCall() {
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                val response = ApiClient.apiService.getUsers()
+
+                if (response.isSuccessful && response.body() != null) {
+
+                    val content = response.body()
+                    Log.e("API_TEST_CORRECT", content.toString())
+
+
+
+                } else {
+                    Log.e("API_TEST", "Reponse pas correcte")
+                }
+
+            } catch (e: Exception) {
+                Log.e("API_TEST", "${e.message}")
+            }
+        }
+    }
 
 }
