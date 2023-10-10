@@ -5,6 +5,9 @@
     android:id="@+id/home_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:labelFor="@id/CategoryContainer"
+    android:autofillHints="CategoryContainer"
+    android:contentDescription="@string/categorycontainer_description"
     tools:context=".ui.home.HomeFragment">
 
     <TextView
@@ -13,12 +16,49 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:layout_marginTop="16dp"
-        android:text="Home"
+        android:text="@string/home"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <ScrollView
+        android:id="@+id/CategoryContainer"
+        android:layout_width="409dp"
+        android:layout_height="670dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
+        <LinearLayout
+            android:id="@+id/Categories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <!-- Premier élément ScrollView horizontal -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Contenu de la première ScrollView horizontale -->
+                <!-- Ajoutez ici les vues que vous souhaitez dans cette ScrollView horizontale -->
+            </HorizontalScrollView>
+
+            <!-- Deuxième élément ScrollView horizontal -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Contenu de la deuxième ScrollView horizontale -->
+                <!-- Ajoutez ici les vues que vous souhaitez dans cette ScrollView horizontale -->
+            </HorizontalScrollView>
+
+            <!-- Vous pouvez ajouter autant d'éléments ScrollView horizontales que nécessaire -->
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
