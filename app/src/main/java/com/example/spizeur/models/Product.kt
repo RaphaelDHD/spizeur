@@ -1,13 +1,17 @@
 package com.example.spizeur.models
 
+import android.icu.text.CaseMap.Title
+
 class Product (
     val id: Int,
-    var name: String,
+    var title: String,
     var description: String,
     var price: Double,
     var discountPercentage: Double,
+    var rating: Double,
+    var stock: Int,
     var brand: String,
     var category: String,
-    var image: Array<String>,
-    var Stock: Int
+    var thumbnail: String,
+    var images: Array<String>,
 )

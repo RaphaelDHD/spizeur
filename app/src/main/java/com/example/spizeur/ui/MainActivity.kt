@@ -9,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.spizeur.R
 import com.example.spizeur.databinding.ActivityMainBinding
+import com.example.spizeur.models.Product
 import com.example.spizeur.models.services.ApiClient
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.Dispatchers
@@ -48,15 +49,22 @@ class MainActivity : AppCompatActivity() {
     private fun executeCall() {
         GlobalScope.launch(Dispatchers.IO) {
             try {
-                val response = ApiClient.apiService.getProductById(1)
-
+                val response = ApiClient.apiService.getAllProduct()
                 if (response.isSuccessful && response.body() != null) {
-
                     val content = response.body()
-                    Log.e("API_TEST_CORRECT", content.toString())
+                    val products = content?.products
 
+                    val productsByCategory = mutableMapOf<String, MutableList<Product>>()
 
-
+                    for (product in products!!) {
+                        if (!productsByCategory.containsKey(product.category)) {
+                            productsByCategory[product.category] = mutableListOf()
+                        }
+                        productsByCategory[product.category]?.add(product)
+                    }
+                    for (product in productsByCategory) {
+                        Log.e("API_TEST", "${product.key} : ${product.value}")
+                    }
                 } else {
                     Log.e("API_TEST", "Reponse pas correcte")
                 }

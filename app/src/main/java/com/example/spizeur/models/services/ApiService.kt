@@ -1,6 +1,7 @@
 package com.example.spizeur.models.services
 
 import com.example.spizeur.models.Product
+import com.example.spizeur.models.Products
 import com.example.spizeur.models.User
 import retrofit2.Response
 import retrofit2.http.GET
@@ -17,5 +18,8 @@ interface ApiService {
 
     @GET("product/{id}")
     suspend fun getProductById(@Path("id") id : Int): Response<Product>
+
+    @GET("product?limit=100")
+    suspend fun getAllProduct(): Response<Products>
 
 }
