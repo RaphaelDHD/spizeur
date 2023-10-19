@@ -1,13 +1,7 @@
 package com.example.spizeur.models
 
-class Products private constructor() {
+import com.google.gson.annotations.SerializedName
 
-    var products: ArrayList<Product> = ArrayList()
-    private object Holder {
-        val INSTANCE = Products()
-    }
+data class Products(@SerializedName("products") val productList: List<Product> ) {
 
-    companion object {
-        val instance: Products by lazy { Holder.INSTANCE }
-    }
 }

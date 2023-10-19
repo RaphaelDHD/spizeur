@@ -1,4 +1,4 @@
-package com.example.spizeur.models.services
+package com.example.spizeur.domain.api
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -35,7 +35,7 @@ object ApiClient {
             .build()
     }
 
-    val apiService :  ApiService by lazy{
+    val apiService : ApiService by lazy{
         retrofit.create(ApiService::class.java)
     }
 

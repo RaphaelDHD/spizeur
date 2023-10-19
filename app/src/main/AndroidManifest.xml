@@ -16,7 +16,7 @@
         android:theme="@style/Theme.Spizeur"
         tools:targetApi="31">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.home.HomeActiviy"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Spizeur">

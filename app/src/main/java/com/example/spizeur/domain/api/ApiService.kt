@@ -1,4 +1,4 @@
-package com.example.spizeur.models.services
+package com.example.spizeur.domain.api
 
 import com.example.spizeur.models.Product
 import com.example.spizeur.models.Products
