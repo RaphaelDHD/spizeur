@@ -6,19 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.HorizontalScrollView
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.spizeur.R
 import com.example.spizeur.databinding.FragmentHomeBinding
-import timber.log.Timber
+import com.squareup.picasso.Picasso
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val vm: HomeViewModel = HomeViewModel()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        vm.fetchProducts()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,19 +37,15 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.homeFragmentTitle
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        vm.productsLiveData.observe(viewLifecycleOwner, Observer {
-        //TODO: display all the products in the HomeFragment
-            showByCategory()
-        })
-
-
-        vm.fetchProducts()
 
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        vm.productsLiveData.observe(viewLifecycleOwner, Observer {
+            showByCategory()
+        })
     }
 
     private fun showByCategory() {
@@ -71,7 +73,12 @@ class HomeFragment : Fragment() {
                     val priceTextView = fragmentView.findViewById<TextView>(R.id.Price)
 
                     titleTextView.text = product.title
-                    priceTextView.text = product.price.toString() + "€"
+                    priceTextView.text = "${product.price}€"
+
+
+                    val imageUrl = product.thumbnail
+                    val image = fragmentView.findViewById<ImageView>(R.id.ProductImage)
+                    Picasso.get().load(imageUrl).into(image)
 
                     // Ajoutez une marge à droite de 16 pixels, sauf pour le dernier élément
                     val layoutParams = LinearLayout.LayoutParams(
