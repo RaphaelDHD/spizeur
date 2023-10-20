@@ -1,5 +1,6 @@
 package com.example.spizeur.ui.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,6 +25,8 @@ class HomeViewModel: ViewModel() {
     private var _productsLiveData : MutableLiveData<Response<Products>?> = MutableLiveData<Response<Products>?>()
     //on expose le liveData en non mutable
     val productsLiveData : LiveData<Response<Products>?> = _productsLiveData
+
+
 
     fun fetchProducts() {
         //lance une coroutine pour effectuer un traitement
@@ -56,7 +59,9 @@ class HomeViewModel: ViewModel() {
         return productsByCategory
     }
 
-
+    fun setSelectedProduct(product: Product) {
+        ProductsRepository.setSelectedProduct(product)
+    }
 
 
 }
