@@ -89,7 +89,6 @@ class HomeFragment : Fragment() {
                     val image = fragmentView.findViewById<ImageView>(R.id.ProductImage)
                     Picasso.get().load(imageUrl).into(image)
 
-                    // Ajoutez une marge à droite de 16 pixels, sauf pour le dernier élément
                     val layoutParams = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.WRAP_CONTENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT

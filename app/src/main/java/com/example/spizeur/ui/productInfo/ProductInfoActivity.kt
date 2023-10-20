@@ -41,12 +41,15 @@ class ProductInfoActivity : AppCompatActivity() {
         description.text = product?.description
 
         val linearLayout = binding.ImageLinearLayout
+
+        linearLayout.weightSum = product?.images!!.size.toFloat()
+
         for (imageUrl in product?.images!!) {
             var image = ImageView(this)
             Picasso.get().load(imageUrl).into(image)
             image.layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
+                LinearLayout.LayoutParams.MATCH_PARENT,
             )
             linearLayout.addView(image)
         }
