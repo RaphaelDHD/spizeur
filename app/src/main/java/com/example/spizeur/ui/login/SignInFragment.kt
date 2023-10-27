@@ -5,8 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.navigation.fragment.findNavController
 import com.example.spizeur.R
-import com.example.spizeur.databinding.FragmentForgotPasswordBinding
 import com.example.spizeur.databinding.FragmentSignInBinding
 
 class SignInFragment : Fragment() {
@@ -24,6 +25,16 @@ class SignInFragment : Fragment() {
 
         return inflater.inflate(R.layout.fragment_sign_in, container, false)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<ImageView>(R.id.signin_return_arrow)?.setOnClickListener {
+            val navController = findNavController()
+            navController.navigate(R.id.login_fragment_graph)
+        }
+    }
+
 
 
 

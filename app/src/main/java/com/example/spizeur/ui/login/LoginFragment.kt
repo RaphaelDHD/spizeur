@@ -34,17 +34,17 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view?.findViewById<TextView>(R.id.forgot_password_link)?.setOnClickListener {
+        view.findViewById<TextView>(R.id.forgot_password_link)?.setOnClickListener {
             val navController = findNavController()
             navController.navigate(R.id.forgotpassword_fragment_graph)
         }
 
-        view?.findViewById<TextView>(R.id.create_account_link)?.setOnClickListener {
+        view.findViewById<TextView>(R.id.signin_link)?.setOnClickListener {
             val navController = findNavController()
             navController.navigate(R.id.signin_fragment_graph)
         }
 
-        view?.findViewById<MaterialButton>(R.id.login_button)?.setOnClickListener {
+        view.findViewById<MaterialButton>(R.id.login_button)?.setOnClickListener {
             val intent = Intent(this.context, HomeActiviy::class.java)
             startActivity(intent)
         }

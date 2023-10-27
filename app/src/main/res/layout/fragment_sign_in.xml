@@ -7,7 +7,7 @@
     tools:context=".ui.login.SignInFragment">
 
     <ImageView
-        android:id="@+id/sign_in_return_arrow"
+        android:id="@+id/signin_return_arrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="24dp"
@@ -19,6 +19,127 @@
         android:focusable="true"
         />
 
+    <ImageView
+        android:id="@+id/iconImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/ic_launcher_foreground"
+        />
 
+    <LinearLayout
+        android:id="@+id/username_signin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_height="40dp"
+        android:layout_width="328dp"
+        android:layout_marginTop="240dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rectangle_text_input_background">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/alternate_username_logo"
+            android:padding="8dp"/>
+
+        <EditText
+            android:id="@+id/username_signin_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:hint="Username"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/email_signin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_height="40dp"
+        android:layout_width="328dp"
+        android:layout_marginTop="300dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rectangle_text_input_background">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/alternate_email_logo"
+            android:padding="8dp"/>
+
+        <EditText
+            android:id="@+id/email_signin_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/set_password_signin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_height="40dp"
+        android:layout_width="328dp"
+        android:layout_marginTop="360dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rectangle_text_input_background">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/alternate_password_logo"
+            android:padding="8dp"/>
+
+        <EditText
+            android:id="@+id/password_signin_set_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:hint="Define password"
+            android:inputType="textPassword"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/confirm_password_signin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_height="40dp"
+        android:layout_width="328dp"
+        android:layout_marginTop="420dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rectangle_text_input_background">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/alternate_password_logo"
+            android:padding="8dp"/>
+
+        <EditText
+            android:id="@+id/password_signin_confirm_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:hint="Confirm password"
+            android:inputType="textPassword"/>
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="500dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Create account"
+        />
 
 </FrameLayout>

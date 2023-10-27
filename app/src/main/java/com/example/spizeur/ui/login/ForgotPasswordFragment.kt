@@ -35,7 +35,7 @@ class ForgotPasswordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view?.findViewById<ImageView>(R.id.forgot_password_return_arrow)?.setOnClickListener {
+        view.findViewById<ImageView>(R.id.forgot_password_return_arrow)?.setOnClickListener {
             val navController = findNavController()
             navController.navigate(R.id.login_fragment_graph)
         }
