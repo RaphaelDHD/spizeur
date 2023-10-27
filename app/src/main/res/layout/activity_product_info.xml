@@ -29,6 +29,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -70,7 +71,50 @@
                 android:text="This is the description of your product..."
                 android:textSize="20sp" />
 
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/Buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        app:layout_anchor="@+id/nestedScrollView"
+        app:layout_anchorGravity="bottom|right">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_action_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:contentDescription="add to favorites"
+            app:backgroundTint="@color/md_theme_light_primaryContainer"
+            app:rippleColor="@color/md_theme_light_inversePrimary"
+            app:srcCompat="@drawable/baseline_bookmark_border_24" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/pad"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
+            android:text="Add to cart"
+            app:backgroundTint="@color/md_theme_light_primary"
+            app:cornerRadius="6dp"
+            app:iconPadding="0dp" />
+
+    </LinearLayout>
+
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
