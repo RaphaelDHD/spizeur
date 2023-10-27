@@ -12,6 +12,6 @@ class Product (
     var stock: Int,
     var brand: String,
     var category: String,
-    var thumbnail: String,
-    var images: Array<String>,
+    var thumbnail: String?,
+    var images: Array<String?>,
 )

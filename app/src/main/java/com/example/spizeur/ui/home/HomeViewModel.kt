@@ -16,11 +16,6 @@ import timber.log.Timber
 
 class HomeViewModel: ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
-
     //en privée le le livedata est mutable
     private var _productsLiveData : MutableLiveData<Response<Products>?> = MutableLiveData<Response<Products>?>()
     //on expose le liveData en non mutable

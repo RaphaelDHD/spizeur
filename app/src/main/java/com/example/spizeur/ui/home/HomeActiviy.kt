@@ -1,6 +1,7 @@
 package com.example.spizeur.ui.home
 
 import android.os.Bundle
+import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
@@ -32,12 +33,14 @@ class HomeActiviy : AppCompatActivity() {
             )
         )
 
+        // do not show the name of the fragment in the top left corner of the app
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
 
         findViewById<Toolbar>(R.id.toolbar)
             .setupWithNavController(navController, appBarConfiguration)
 
         navView.setupWithNavController(navController)
     }
-
 
 }
