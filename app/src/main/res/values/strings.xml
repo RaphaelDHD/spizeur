@@ -50,7 +50,7 @@
     <string name="categorycontainer_description">CategoryContainer description</string>
     <string name="home">Home</string>
     <string name="description_forgot_password_main_text">Enter your email address to reset your password.</string>
-    <string name="description_forgot_password_sub_text">If the email entered is valid, you will receive a link to click on.</string>
+    <string name="description_forgot_password_sub_text">If the email entered is valid, \n you will receive a link to click on.</string>
     <string name="title_activity_product_info">productInfoActivity</string>
     <string name="horizontalscrollview_for_the_images">HorizontalScrollView for the images</string>
 </resources>
