@@ -87,7 +87,7 @@
         android:focusable="true"
         />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/login_button"
         android:layout_height="40dp"
         android:layout_width="wrap_content"
@@ -98,7 +98,6 @@
         android:text="Connect"
         android:background="@drawable/button_connection"
         />
-
 
     <TextView
         android:id="@+id/create_account_link"
