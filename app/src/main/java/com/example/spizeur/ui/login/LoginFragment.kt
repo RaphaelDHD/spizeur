@@ -1,5 +1,6 @@
 package com.example.spizeur.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,6 +12,8 @@ import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.example.spizeur.R
 import com.example.spizeur.databinding.FragmentLoginBinding
+import com.example.spizeur.ui.home.HomeActiviy
+import com.google.android.material.button.MaterialButton
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
@@ -39,6 +42,11 @@ class LoginFragment : Fragment() {
         view?.findViewById<TextView>(R.id.create_account_link)?.setOnClickListener {
             val navController = findNavController()
             navController.navigate(R.id.signin_fragment_graph)
+        }
+
+        view?.findViewById<MaterialButton>(R.id.login_button)?.setOnClickListener {
+            val intent = Intent(this.context, HomeActiviy::class.java)
+            startActivity(intent)
         }
     }
 
