@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
 import com.example.spizeur.R
 import com.example.spizeur.databinding.FragmentForgotPasswordBinding
@@ -36,8 +37,8 @@ class ForgotPasswordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<ImageView>(R.id.forgot_password_return_arrow)?.setOnClickListener {
-            val navController = findNavController()
-            navController.navigate(R.id.login_fragment_graph)
+            val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+            fragmentManager.popBackStack()
         }
     }
 
