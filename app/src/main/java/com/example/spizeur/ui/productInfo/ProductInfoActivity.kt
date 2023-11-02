@@ -22,8 +22,6 @@ class ProductInfoActivity : AppCompatActivity() {
         binding = ActivityProductInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(findViewById(R.id.toolbar))
-
         val product = vm.getSelectedProduct()
         setInformation(product)
     }

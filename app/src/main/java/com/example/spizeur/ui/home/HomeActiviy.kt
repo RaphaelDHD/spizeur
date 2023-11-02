@@ -32,10 +32,6 @@ class HomeActiviy : AppCompatActivity() {
             )
         )
 
-
-        findViewById<Toolbar>(R.id.toolbar)
-            .setupWithNavController(navController, appBarConfiguration)
-
         navView.setupWithNavController(navController)
     }
 

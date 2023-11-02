@@ -10,17 +10,6 @@
     android:contentDescription="@string/categorycontainer_description"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/home_fragment_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="32sp"
-        android:layout_marginTop="16dp"
-        android:text="@string/home"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
     <ScrollView
         android:id="@+id/CategoryContainer"
         android:layout_width="409dp"

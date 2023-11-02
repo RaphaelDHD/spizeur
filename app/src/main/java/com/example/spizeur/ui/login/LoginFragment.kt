@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
 import com.example.spizeur.R
 import com.example.spizeur.databinding.FragmentLoginBinding
@@ -47,6 +48,7 @@ class LoginFragment : Fragment() {
         view.findViewById<MaterialButton>(R.id.login_button)?.setOnClickListener {
             val intent = Intent(this.context, HomeActiviy::class.java)
             startActivity(intent)
+            requireActivity().finish()
         }
     }
 

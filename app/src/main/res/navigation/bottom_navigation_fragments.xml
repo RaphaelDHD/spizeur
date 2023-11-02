@@ -8,15 +8,19 @@
     <fragment
         android:id="@+id/nav_home_fragment"
         android:name="com.example.spizeur.ui.home.HomeFragment"
-        android:label="Home"
         tools:layout="@layout/fragment_home">
     </fragment>
 
     <fragment
         android:id="@+id/nav_profile_fragment"
         android:name="com.example.spizeur.ui.profile.ProfileFragment"
-        android:label="Profile"
         tools:layout="@layout/fragment_profile">
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_cart_fragment"
+        android:name="com.example.spizeur.ui.cart.CartFragment"
+        tools:layout="@layout/fragment_cart">
     </fragment>
 
 </navigation>
