@@ -16,12 +16,14 @@ import timber.log.Timber
 
 class HomeViewModel: ViewModel() {
 
-    //en privée le le livedata est mutable
+    //en privée le livedata est mutable
     private var _productsLiveData : MutableLiveData<Response<Products>?> = MutableLiveData<Response<Products>?>()
     //on expose le liveData en non mutable
     val productsLiveData : LiveData<Response<Products>?> = _productsLiveData
 
-
+    init {
+        fetchProducts()
+    }
 
     fun fetchProducts() {
         //lance une coroutine pour effectuer un traitement
@@ -34,7 +36,6 @@ class HomeViewModel: ViewModel() {
                 }
                 .collect {
                     //on post le resultat aux observer
-
                     it.isSuccessful
                     it.body()?.productList
                     _productsLiveData.postValue(it)
@@ -42,14 +43,19 @@ class HomeViewModel: ViewModel() {
         }
     }
 
-    fun sortProductsByCategory(): MutableMap<String, MutableList<Product>> {
-        val productsByCategory = mutableMapOf<String, MutableList<Product>>()
+    fun sortProductsByCategory(): MutableList<Products> {
+        val productsByCategory = mutableListOf<Products>()
+        _productsLiveData.value?.body()?.productList?.let { productList ->
+            val categories = mutableSetOf<String>()
 
-        for (product in _productsLiveData.value?.body()?.productList!!) {
-            if (!productsByCategory.containsKey(product.category)) {
-                productsByCategory[product.category] = mutableListOf()
+            for (product in productList) {
+                if (!categories.contains(product.category)) {
+                    categories.add(product.category)
+                    productsByCategory.add(Products(mutableListOf(product)))
+                } else {
+                    productsByCategory[categories.indexOf(product.category)].productList.add(product)
+                }
             }
-            productsByCategory[product.category]?.add(product)
         }
         return productsByCategory
     }

@@ -5,76 +5,69 @@
     android:id="@+id/home_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:labelFor="@id/CategoryContainer"
     android:autofillHints="CategoryContainer"
     android:contentDescription="@string/categorycontainer_description"
     tools:context=".ui.home.HomeFragment">
 
+    <!-- Nested scrollView pour les produits -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout3">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:fitsSystemWindows="true">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/parent_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingTop="10dp"
+                android:paddingBottom="60dp"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Barre de recherche & résultats -->
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout3"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/searchbar_scrolling_view_behavior"
-            android:labelFor="@id/search_bar"
             android:contentDescription="DESCRIPTION DE LA RECHERCHE"
-            >
+            android:labelFor="@id/search_bar"
+            app:layout_behavior="@string/searchbar_scrolling_view_behavior">
+
         </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <com.google.android.material.search.SearchBar
                 android:id="@+id/search_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="RECHERCHE"
                 android:elevation="4dp"
-                app:backgroundTint="@color/md_theme_dark_onSecondaryContainer">
-            </com.google.android.material.search.SearchBar>
+                android:hint="RECHERCHE"
+                app:backgroundTint="@color/md_theme_dark_onSecondaryContainer" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.google.android.material.search.SearchView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="RECHERCHE"
-            app:layout_anchor="@id/search_bar"
             android:elevation="4dp"
-            app:backgroundTint="@color/md_theme_dark_onSecondaryContainer">
-        </com.google.android.material.search.SearchView>
+            android:hint="RECHERCHE"
+            app:backgroundTint="@color/md_theme_dark_onSecondaryContainer"
+            app:layout_anchor="@id/search_bar" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-    <ScrollView
-        android:id="@+id/CategoryContainer"
-        android:layout_width="409dp"
-        android:layout_height="670dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:elevation="1dp">
-        <LinearLayout
-            android:id="@+id/Categories"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </HorizontalScrollView>
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </HorizontalScrollView>
-        </LinearLayout>
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
