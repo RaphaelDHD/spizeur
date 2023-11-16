@@ -16,6 +16,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="70dp"
         android:src="@drawable/ic_launcher_foreground"
+        android:contentDescription="@string/contentDescription_spizeur_logo"
         />
 
     <LinearLayout
@@ -32,15 +33,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/alternate_email_logo"
-            android:padding="8dp"/>
+            android:padding="8dp"
+            android:contentDescription="@string/email"/>
 
         <EditText
             android:id="@+id/email_login_input"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            android:hint="Email"
-            android:inputType="textEmailAddress" />
+            android:hint="@string/email"
+            android:autofillHints="emailAddress"
+            android:inputType="textEmailAddress"
+            tools:ignore="labelFor"
+            />
     </LinearLayout>
 
 
@@ -59,15 +64,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/alternate_password_logo"
-            android:padding="8dp"/>
+            android:padding="8dp"
+            android:contentDescription="@string/password"/>
 
         <EditText
             android:id="@+id/password_login_input"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            android:hint="Password"
-            android:inputType="textPassword"/>
+            android:hint="@string/password"
+            android:autofillHints="emailAddress"
+            android:inputType="textPassword"
+            tools:ignore="labelFor"/>
 
     </LinearLayout>
 
@@ -93,7 +101,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="450dp"
         android:layout_gravity="center_horizontal"
-        android:text="Connect"
+        android:text="@string/connect_button"
         />
 
     <TextView
@@ -106,6 +114,7 @@
         android:layout_height="wrap_content"
         android:text="@string/create_an_account"
         android:clickable="true"
+        android:focusable="true"
         />
 
 

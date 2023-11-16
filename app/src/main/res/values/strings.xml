@@ -49,8 +49,23 @@
     <string name="create_an_account"><u>Don\'t have an account ?</u></string>
     <string name="categorycontainer_description">CategoryContainer description</string>
     <string name="home">Home</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="username">Username</string>
+    <string name="connect_button">Connect</string>
+    <string name="create_account_button">Create account</string>
+    <string name="send_email_button">Send Email</string>
     <string name="description_forgot_password_main_text">Enter your email address to reset your password.</string>
     <string name="description_forgot_password_sub_text">If the email entered is valid, \n you will receive a link to click on.</string>
     <string name="title_activity_product_info">productInfoActivity</string>
     <string name="horizontalscrollview_for_the_images">HorizontalScrollView for the images</string>
+    <string name="contentDescription_spizeur_logo">Application\'s logo</string>
+    <string name="contentDescription_back_arrow">Return button</string>
+    <string name="contentDescription_send_email_input">Send email input</string>
+    <string name="contentDescription_email_input">Email input</string>
+    <string name="contentDescription_password_input">Password input</string>
+    <string name="contentDescription_confirm_password_input">Confirm password input</string>
+    <string name="contentDescription_username_input">Username input</string>
+
 </resources>
