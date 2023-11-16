@@ -8,21 +8,18 @@
     <fragment
         android:id="@+id/login_fragment_graph"
         android:name="com.example.spizeur.ui.login.LoginFragment"
-        android:label="Login"
         tools:layout="@layout/fragment_login">
     </fragment>
 
     <fragment
         android:id="@+id/signin_fragment_graph"
         android:name="com.example.spizeur.ui.login.SignInFragment"
-        android:label="Sign In"
         tools:layout="@layout/fragment_sign_in">
     </fragment>
 
     <fragment
         android:id="@+id/forgotpassword_fragment_graph"
         android:name="com.example.spizeur.ui.login.ForgotPasswordFragment"
-        android:label="Forgot Password"
         tools:layout="@layout/fragment_forgot_password">
     </fragment>
 

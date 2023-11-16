@@ -1,31 +1,33 @@
 package com.example.spizeur.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.HorizontalScrollView
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.spizeur.R
 import com.example.spizeur.databinding.FragmentHomeBinding
-import com.example.spizeur.ui.productInfo.ProductInfoActivity
-import com.squareup.picasso.Picasso
+import com.example.spizeur.ui.adapter.CategoryAdapter
+import timber.log.Timber
+
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val vm: HomeViewModel = HomeViewModel()
+    private lateinit var vm: HomeViewModel
+    private lateinit var parentRecyclerView: RecyclerView
+    private lateinit var categoryAdapter: CategoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        vm = ViewModelProvider(this).get(HomeViewModel::class.java)
         vm.fetchProducts()
     }
 
@@ -34,74 +36,44 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        // Initialize the RecyclerView
+        parentRecyclerView = root.findViewById(R.id.parent_recycler_view)
+        parentRecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        categoryAdapter = CategoryAdapter()
+        parentRecyclerView.adapter = categoryAdapter
 
+        setUpViews()
+        vm.productsLiveData.observe(viewLifecycleOwner, Observer { response ->
+            if (response != null && response.isSuccessful && response.body() != null) {
+                // Assuming sortProductsByCategory returns a list of categories
+                renderCategoryList()
+            } else {
+                // Handle the error case if needed
+                Timber.e("Error fetching products")
+            }
+        })
         return root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        vm.productsLiveData.observe(viewLifecycleOwner, Observer {
-            showByCategory()
-        })
+    private fun setUpViews() {
+        parentRecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        categoryAdapter = CategoryAdapter()
+        parentRecyclerView.adapter = categoryAdapter
+
     }
 
-    private fun showByCategory() {
-        val productsByCategory = vm.sortProductsByCategory()
-        val container = binding.Categories
-
-            for (productCategory in productsByCategory) {
-                val categoryTitle = TextView(this.context)
-                categoryTitle.text = productCategory.key
-                container.addView(categoryTitle)
-
-                val horizontalScrollView = HorizontalScrollView(this.context)
-                container.addView(horizontalScrollView)
-
-                val linearLayout = LinearLayout(this.context)
-                linearLayout.orientation = LinearLayout.HORIZONTAL
-                horizontalScrollView.addView(linearLayout)
-
-                for ((index, product) in productCategory.value.withIndex()) {
-                    val fragmentView = layoutInflater.inflate(
-                        R.layout.product_fragment,
-                        null
-                    )
-
-                    fragmentView.setOnClickListener {
-                        vm.setSelectedProduct(product)
-                        startActivity(Intent(this.context, ProductInfoActivity::class.java))
-                    }
-
-                    val titleTextView = fragmentView.findViewById<TextView>(R.id.Title)
-                    val priceTextView = fragmentView.findViewById<TextView>(R.id.Price)
-
-                    titleTextView.text = product.title
-                    priceTextView.text = "${product.price}€"
-
-
-                    val imageUrl = product.thumbnail
-                    val image = fragmentView.findViewById<ImageView>(R.id.ProductImage)
-                    Picasso.get().load(imageUrl).into(image)
-
-                    val layoutParams = LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT
-                    )
-                    if (index < productCategory.value.size - 1) {
-                        layoutParams.setMargins(0, 0, 16, 0)
-                    }
-                    fragmentView.layoutParams = layoutParams
-
-                    linearLayout.addView(fragmentView)
-                }
-            }
+    private fun renderCategoryList() {
+        val list = vm.sortProductsByCategory()
+        categoryAdapter.addData(list)
+        categoryAdapter.notifyDataSetChanged()
     }
+
 
 
     override fun onDestroyView() {
