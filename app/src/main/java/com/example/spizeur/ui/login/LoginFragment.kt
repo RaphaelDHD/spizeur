@@ -35,9 +35,8 @@ class LoginFragment : Fragment() {
     ): View {
 
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-
+        vm.checkUserIsLogin(requireContext())
         vm.isConnected.observe(viewLifecycleOwner) { isConnected ->
-            Log.d("ISCONNECTED", isConnected.toString())
             if (isConnected != null && isConnected) {
                 val intent = Intent(requireContext(), HomeActiviy::class.java)
                 startActivity(intent)
@@ -71,7 +70,7 @@ class LoginFragment : Fragment() {
     }
 
     fun login(email: String, password: String) {
-        vm.login(email, password)
+        vm.login(email, password, requireContext())
     }
 
 
