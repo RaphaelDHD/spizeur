@@ -7,13 +7,15 @@ import java.util.Date
 @Entity
 data class User(
     @PrimaryKey(autoGenerate = true)
-    val Id: Int,
-    val firstName: String,
-    val lastName: String,
+    val Id: Int = 0,
+    val username: String,
+    val firstName: String? = null,
+    val lastName: String? = null,
     val email: String,
-    val birthDate: Date?,
-    val address: Address?,
-    val paymentInformation: PaymentInformation?
+    val password: String,
+    val birthDate: Date? = null,
+    val address: Address? = null,
+    val paymentInformation: PaymentInformation? = null
     ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

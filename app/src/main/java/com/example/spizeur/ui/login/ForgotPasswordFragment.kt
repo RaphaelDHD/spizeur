@@ -14,13 +14,14 @@ import com.example.spizeur.R
 import com.example.spizeur.databinding.FragmentForgotPasswordBinding
 import com.example.spizeur.databinding.FragmentLoginBinding
 import com.example.spizeur.ui.home.HomeActiviy
+import com.example.spizeur.ui.home.HomeViewModel
 import com.google.android.material.button.MaterialButton
 
 class ForgotPasswordFragment : Fragment() {
 
     private var _binding: FragmentForgotPasswordBinding? = null
     private val binding get() = _binding!!
-    private val fragmentPasswordViewModel : FragmentPasswordViewModel = FragmentPasswordViewModel()
+    private lateinit var vm: LoginViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,

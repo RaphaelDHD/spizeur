@@ -9,6 +9,10 @@ object DBDataSource {
         SpizeurDataBase.getInstance().userDAO().insertUser(user)
     }
 
+    suspend fun getUser(email: String): User {
+        return SpizeurDataBase.getInstance().userDAO().getUser(email)
+    }
+
     suspend fun addProducts(products: List<Product>) {
         SpizeurDataBase.getInstance().productDAO().insertProducts(products)
     }

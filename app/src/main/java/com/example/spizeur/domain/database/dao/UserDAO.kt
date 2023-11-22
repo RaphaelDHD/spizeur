@@ -15,6 +15,9 @@ interface UserDAO {
     @Delete
     suspend fun deleteUser(user: User)
 
+    @Query("Select * from User where email=:email limit 1")
+    suspend fun getUser(email: String): User
+
     @Query("Select * from User")
     suspend fun getAllUser(): List<User>
 

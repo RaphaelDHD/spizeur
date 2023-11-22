@@ -20,36 +20,53 @@ class Converters {
 
     // Address
     @TypeConverter
-    fun fromAddress(address: Address): String {
-        return "${address.address},${address.city},${address.postalCode},${address.supplement}"
+    fun fromAddress(address: Address?): String {
+        return address?.let {
+            "${it.address},${it.city},${it.postalCode},${it.supplement}"
+        } ?: ""
     }
 
     @TypeConverter
-    fun toAddress(value: String): Address {
-        val parts = value.split(",")
-        return Address(
-            address = parts.getOrElse(0) { "" },
-            city = parts.getOrElse(1) { "" },
-            postalCode = parts.getOrElse(2) { "" },
-            supplement = parts.getOrElse(3) { "" }
-        )
+    fun toAddress(value: String?): Address? {
+        return if (value.isNullOrBlank()) {
+            null
+        } else {
+            val parts = value.split(",")
+            Address(
+                address = parts.getOrElse(0) { "" },
+                city = parts.getOrElse(1) { "" },
+                postalCode = parts.getOrElse(2) { "" },
+                supplement = parts.getOrElse(3) { "" }
+            )
+        }
     }
 
     // paymentInformation
     @TypeConverter
-    fun fromPaymentInformation(paymentInfo: PaymentInformation): String {
-        return "${paymentInfo.number},${paymentInfo.expireDate},${paymentInfo.code}"
+    fun fromPaymentInformation(paymentInfo: PaymentInformation?): String {
+        return paymentInfo?.let {
+            "${it.number},${it.expireDate},${it.code}"
+        } ?: ""
     }
 
     @TypeConverter
-    fun toPaymentInformation(value: String): PaymentInformation {
-        val parts = value.split(",")
-        return PaymentInformation(
-            number = parts.getOrElse(0) { "0" }.toInt(),
-            expireDate = parts.getOrElse(1) { "" },
-            code = parts.getOrElse(2) { "0" }.toInt()
-        )
+    fun toPaymentInformation(value: String?): PaymentInformation? {
+        if (value.isNullOrBlank() || value.equals("null", ignoreCase = true)) {
+            return null
+        } else {
+            val parts = value.split(",")
+            return try {
+                PaymentInformation(
+                    number = parts.getOrElse(0) { "0" }?.toInt() ?: 0,
+                    expireDate = parts.getOrElse(1) { "" },
+                    code = parts.getOrElse(2) { "0" }?.toInt() ?: 0
+                )
+            } catch (e: NumberFormatException) {
+                null
+            }
+        }
     }
+
 
     @TypeConverter
     fun fromImages(images : Array<String>): String {
