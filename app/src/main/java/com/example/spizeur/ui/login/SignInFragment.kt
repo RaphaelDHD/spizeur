@@ -57,20 +57,26 @@ class SignInFragment : Fragment() {
             val password = view.findViewById<EditText>(R.id.password_signin_set_input).text.toString()
             val confirmPassword = view.findViewById<EditText>(R.id.password_signin_confirm_input).text.toString()
             viewLifecycleOwner.lifecycleScope.launch {
-                val success = vm.createAccount(username, email, password, confirmPassword)
-                if (success) {
-                    val intent = Intent(requireContext(), HomeActiviy::class.java)
-                    startActivity(intent)
-                    requireActivity().finish()
-                } else {
-                    Toast.makeText(context, "Error, it's impossible to create your account", Toast.LENGTH_SHORT).show()
-                }
+                createAccount(username, email, password, confirmPassword)
             }
         }
-
-
     }
 
+    private suspend fun createAccount(username: String, email: String, password: String, confirmPassword: String) {
+        val canCreateAccount = !vm.userExist(email)
+        if (canCreateAccount) {
+            val success = vm.createAccount(username, email, password, confirmPassword)
+            if (success) {
+                val intent = Intent(requireContext(), HomeActiviy::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+            } else {
+                Toast.makeText(context, "Error, it's impossible to create your account", Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            Toast.makeText(context, "Error, this email is already used", Toast.LENGTH_SHORT).show()
+        }
+    }
 
 
 

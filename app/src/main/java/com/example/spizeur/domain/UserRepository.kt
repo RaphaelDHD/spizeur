@@ -1,5 +1,6 @@
 package com.example.spizeur.domain
 
+import android.util.Log
 import com.example.spizeur.domain.database.DBDataSource
 import com.example.spizeur.models.User
 
@@ -15,7 +16,6 @@ object UserRepository {
             if (User != null) {
                 return true
             }
-
             return false
         }
 

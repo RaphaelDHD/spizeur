@@ -69,11 +69,13 @@ class HomeViewModel: ViewModel() {
         return productList
     }
 
-    suspend fun editDatabaseIfNeeded() {
+    fun editDatabaseIfNeeded() {
         val productsFromApi = _productsLiveData.value?.body()?.productList
-        val productsFromDatabase = getAllProductsFromDatabase()
-        if (productsFromApi != null && productsFromApi.size != productsFromDatabase.size) {
-            updateDatabase(productsFromApi)
+        viewModelScope.launch {
+            val productsFromDatabase = getAllProductsFromDatabase()
+            if (productsFromApi != null && productsFromApi.size != productsFromDatabase.size) {
+                updateDatabase(productsFromApi)
+            }
         }
     }
 
