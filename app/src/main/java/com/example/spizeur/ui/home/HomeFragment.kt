@@ -9,11 +9,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spizeur.R
 import com.example.spizeur.databinding.FragmentHomeBinding
 import com.example.spizeur.ui.adapter.CategoryAdapter
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 
@@ -50,10 +52,13 @@ class HomeFragment : Fragment() {
         setUpViews()
         vm.productsLiveData.observe(viewLifecycleOwner, Observer { response ->
             if (response != null && response.isSuccessful && response.body() != null) {
-                // Assuming sortProductsByCategory returns a list of categories
                 renderCategoryList()
+                viewLifecycleOwner.lifecycleScope.launch {
+                    vm.editDatabaseIfNeeded()
+                }
+
+
             } else {
-                // Handle the error case if needed
                 Timber.e("Error fetching products")
             }
         })

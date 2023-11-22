@@ -1,18 +1,23 @@
 package com.example.spizeur.domain.database
 
 import android.content.Context
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.example.spizeur.domain.database.dao.ProductDAO
 import com.example.spizeur.domain.database.dao.UserDAO
+import com.example.spizeur.models.Product
 import com.example.spizeur.models.User
 
-@Database(entities = [User::class], version = 1)
+@Database(entities = [User::class, Product::class],
+    version = 2)
 @TypeConverters(Converters::class)
 abstract class SpizeurDataBase: RoomDatabase() {
 
     abstract fun userDAO(): UserDAO
+    abstract fun productDAO(): ProductDAO
 
     companion object {
 

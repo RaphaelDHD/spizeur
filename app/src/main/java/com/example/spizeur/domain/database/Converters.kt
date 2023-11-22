@@ -51,6 +51,15 @@ class Converters {
         )
     }
 
+    @TypeConverter
+    fun fromImages(images : Array<String>): String {
+        return images.joinToString(",")
+    }
+
+    @TypeConverter
+    fun toImages(value: String): Array<String> {
+        return value.split(",").toTypedArray()
+    }
 
 
 }

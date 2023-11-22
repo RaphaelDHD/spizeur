@@ -60,6 +60,28 @@ class HomeViewModel: ViewModel() {
         return productsByCategory
     }
 
+
+    private fun getAllProductsFromDatabase(): List<Product> {
+        var productList = listOf<Product>()
+        viewModelScope.launch {
+            productList = ProductsRepository.getAllProductsFromDatabase()
+        }
+        return productList
+    }
+
+    suspend fun editDatabaseIfNeeded() {
+        val productsFromApi = _productsLiveData.value?.body()?.productList
+        val productsFromDatabase = getAllProductsFromDatabase()
+        if (productsFromApi != null && productsFromApi.size != productsFromDatabase.size) {
+            updateDatabase(productsFromApi)
+        }
+    }
+
+    suspend fun updateDatabase(productsFromApi: List<Product>) {
+        ProductsRepository.deleteAllProductsFromDatabase()
+        ProductsRepository.addMultipleProductToDatabase(productsFromApi)
+    }
+
     fun setSelectedProduct(product: Product) {
         ProductsRepository.setSelectedProduct(product)
     }
