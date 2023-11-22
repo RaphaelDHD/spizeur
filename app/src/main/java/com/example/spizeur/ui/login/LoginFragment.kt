@@ -9,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.spizeur.R
 import com.example.spizeur.databinding.FragmentLoginBinding
@@ -19,7 +21,12 @@ import com.google.android.material.button.MaterialButton
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
-    private val loginViewModel: LoginViewModel = LoginViewModel()
+    private lateinit var vm: LoginViewModel
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        vm = ViewModelProvider(this)[LoginViewModel::class.java]
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,6 +35,17 @@ class LoginFragment : Fragment() {
     ): View {
 
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
+
+        vm.isConnected.observe(viewLifecycleOwner) { isConnected ->
+            Log.d("ISCONNECTED", isConnected.toString())
+            if (isConnected != null && isConnected) {
+                val intent = Intent(requireContext(), HomeActiviy::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+            } else if(isConnected != null && !isConnected) {
+                Toast.makeText(context, "Error, it's impossible to connect \n check your email and password", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
@@ -46,10 +64,17 @@ class LoginFragment : Fragment() {
         }
 
         view.findViewById<MaterialButton>(R.id.login_button)?.setOnClickListener {
-            val intent = Intent(this.context, HomeActiviy::class.java)
-            startActivity(intent)
-            requireActivity().finish()
+            val email = view.findViewById<TextView>(R.id.email_login_input).text.toString()
+            val password = view.findViewById<TextView>(R.id.password_login_input).text.toString()
+            login(email, password)
         }
     }
+
+    fun login(email: String, password: String) {
+        vm.login(email, password)
+    }
+
+
+
 
 }

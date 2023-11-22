@@ -6,8 +6,12 @@ import com.example.spizeur.models.User
 
 object UserRepository {
 
-        fun login(email: String, password: String): Boolean {
-            return true
+        suspend fun login(email: String, password: String): Boolean {
+            val user = DBDataSource.getUser(email)
+            if (user.password == password) {
+                return true
+            }
+            return false
         }
 
 
