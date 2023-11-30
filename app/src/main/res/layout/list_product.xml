@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/productContainer"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="15dp"
-    app:cardCornerRadius="30dp"
-    app:cardElevation="5dp">
+    android:background="@color/md_theme_light_background"
+    app:cardCornerRadius="15dp"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="158dp"
-        android:layout_height="146dp"
-        android:background="@drawable/frame_3">
+        android:layout_width="156dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/frame_3"
+        >
 
         <ImageView
             android:id="@+id/productImage"
             android:layout_width="160dp"
             android:layout_height="73dp"
             android:contentDescription="Product description"
+            app:circularflow_radiusInDP="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -26,11 +28,14 @@
         <TextView
             android:id="@+id/productTitle"
             android:layout_width="wrap_content"
-            android:layout_height="29dp"
+            android:layout_height="35dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:padding="0dp"
             android:text="Jon Snow"
             android:textColor="@color/md_theme_light_onSecondaryContainer"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/productPrice"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/productImage"
@@ -39,12 +44,12 @@
         <TextView
             android:id="@+id/productPrice"
             android:layout_width="wrap_content"
-            android:layout_height="29dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
             android:padding="0dp"
             android:text="Jon Snow"
-            android:textColor="@color/md_theme_light_onSecondaryContainer"
+            android:textColor="@color/md_theme_light_secondary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

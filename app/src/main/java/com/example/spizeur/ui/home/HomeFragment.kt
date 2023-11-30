@@ -53,7 +53,7 @@ class HomeFragment : Fragment() {
         vm.productsLiveData.observe(viewLifecycleOwner, Observer { response ->
             if (response != null && response.isSuccessful && response.body() != null) {
                 renderCategoryList()
-                vm.editDatabaseIfNeeded()
+                // vm.editDatabaseIfNeeded()
 
             } else {
                 Timber.e("Error fetching products")
