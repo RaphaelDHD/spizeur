@@ -75,5 +75,9 @@
     <string name="contentDescription_settings_logo">Settings logo</string>
     <string name="contentDescription_info_logo">Information logo</string>
     <string name="contentDescription_log_out_logo">Log out logo</string>
+    <string name="text_settings_change_username">Change username</string>
+    <string name="text_settings_change_email">Change email</string>
+    <string name="text_settings_change_password">Change password</string>
+    <string name="text_settings_change_address">Change address</string>
 
 </resources>
