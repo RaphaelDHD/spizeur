@@ -30,7 +30,7 @@
             android:name=".ui.home.HomeActiviy"
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="true"
