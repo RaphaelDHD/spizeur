@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.spizeur.domain.database.DBDataSource
 import com.example.spizeur.models.Order
+import com.example.spizeur.models.Product
 import com.example.spizeur.models.User
 import kotlin.random.Random
 
@@ -72,6 +73,11 @@ object UserRepository {
             _currentUserOrder.value = order
         }
     }
+
+    fun addToCart(product: Product) {
+        _currentUserOrder.value?.productList?.add(product)
+    }
+
 
 
 }

@@ -85,7 +85,7 @@
         app:layout_anchorGravity="bottom|right">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floating_action_button"
+            android:id="@+id/AddToFavorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
@@ -97,7 +97,7 @@
             app:srcCompat="@drawable/baseline_bookmark_border_24" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/pad"
+            android:id="@+id/AddToCart"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
