@@ -7,6 +7,7 @@ import java.util.Date
 @Entity
 class Order (
     @PrimaryKey(autoGenerate = true) val orderId: Int,
+    val userCommandId: Int,
     val productList: List<Product>,
     val quantity: Int,
     var deliveryDate: Date,

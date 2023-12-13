@@ -4,7 +4,9 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Transaction
 import com.example.spizeur.models.User
+import com.example.spizeur.models.crossRef.UserWithOrders
 
 @Dao
 interface UserDAO {
@@ -23,6 +25,10 @@ interface UserDAO {
 
     @Query("Select * from User where email=:email limit 1")
     suspend fun getUserFromMail(email: String): User
+
+    @Transaction
+    @Query("SELECT * FROM User where userId=:userId")
+    fun getUserOrderById(userId: Int): UserWithOrders
 
 
 }
