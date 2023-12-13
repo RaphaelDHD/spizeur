@@ -1,12 +1,17 @@
 package com.example.spizeur.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.Date
 
-class Order (
-    val product: Product,
-    val quantity: Int,
-    var deliveryDate: Date,
-    val commandDate: Date,
-    val fullPrice: Double,
-    val deliveryAddress: Address
+@Entity
+class Order(
+    @PrimaryKey(autoGenerate = true) val orderId: Int? = null,
+    val userCommandId: Int?,
+    val productList: MutableList<Product> = mutableListOf<Product>(),
+    val quantity: Int = 0,
+    var deliveryDate: Date?= null,
+    val commandDate: Date? = null,
+    val fullPrice: Double? = null,
+    val deliveryAddress: Address? = null
     )

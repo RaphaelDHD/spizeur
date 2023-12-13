@@ -4,7 +4,9 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Transaction
 import com.example.spizeur.models.User
+import com.example.spizeur.models.crossRef.UserWithOrders
 
 @Dao
 interface UserDAO {
@@ -26,6 +28,11 @@ interface UserDAO {
 
     @Query("UPDATE User SET username =:username WHERE Id = 1")
     suspend fun setUserNewUsername(username: String)
+    
+    @Transaction
+    @Query("SELECT * FROM User where userId=:userId")
+    fun getUserOrderById(userId: Int): UserWithOrders
+
 
     @Query("UPDATE User SET email =:email WHERE Id = 1")
     suspend fun setUserNewEmail(email: String)

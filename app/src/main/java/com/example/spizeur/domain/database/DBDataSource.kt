@@ -1,6 +1,8 @@
 package com.example.spizeur.domain.database
 
+import com.example.spizeur.models.Order
 import com.example.spizeur.models.Product
+import com.example.spizeur.models.Products
 import com.example.spizeur.models.User
 
 object DBDataSource {
@@ -29,6 +31,19 @@ object DBDataSource {
     {
         SpizeurDataBase.getInstance().userDAO().setUserNewUsername(username)
     }
+    suspend fun addOrder(order: Order) {
+        SpizeurDataBase.getInstance().orderDAO().insertOrder(order)
+    }
+
+    suspend fun getProductListByIds(listId: List<Int>): MutableList<Product> {
+        val productList = mutableListOf<Product>()
+        for (id in listId) {
+            productList.add(SpizeurDataBase.getInstance().productDAO().getProductById(id))
+        }
+        return productList
+    }
+
+
 
 
 }

@@ -1,12 +1,14 @@
 package com.example.spizeur.ui.productInfo
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 
 import androidx.appcompat.app.AppCompatActivity
 import com.example.spizeur.R
 import com.example.spizeur.databinding.ActivityProductInfoBinding
+import com.example.spizeur.domain.UserRepository
 import com.example.spizeur.models.Product
 import com.squareup.picasso.Picasso
 
@@ -24,8 +26,17 @@ class ProductInfoActivity : AppCompatActivity() {
 
         val product = vm.getSelectedProduct()
         setInformation(product)
-    }
 
+        val button = findViewById<Button>(R.id.AddToCart)
+
+        button.setOnClickListener {
+            UserRepository.addToCart(product!!)
+            button.setText("Added !")
+            button.setBackgroundColor(resources.getColor(R.color.md_theme_light_success))
+        }
+
+
+    }
 
     fun setInformation(product : Product?) {
         val title = binding.Title
@@ -53,6 +64,7 @@ class ProductInfoActivity : AppCompatActivity() {
         }
 
     }
+
 
 
 }
