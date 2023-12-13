@@ -62,13 +62,14 @@
         >
 
         <TextView
+            android:id="@+id/text_change_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:padding="6dp"
+            android:padding="8dp"
             android:text="@string/text_settings_change_username"
-            android:textSize="16dp"
+            android:textSize="20dp"
             />
 
         <TextView
@@ -76,9 +77,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:padding="6dp"
+            android:padding="8dp"
             android:text="@string/text_settings_change_email"
-            android:textSize="16dp"
+            android:textSize="20dp"
             />
 
         <TextView
@@ -86,9 +87,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:padding="6dp"
+            android:padding="8dp"
             android:text="@string/text_settings_change_password"
-            android:textSize="16dp"
+            android:textSize="20dp"
             />
 
         <TextView
@@ -96,9 +97,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:padding="6dp"
+            android:padding="8dp"
             android:text="@string/text_settings_change_address"
-            android:textSize="16dp"
+            android:textSize="20dp"
             />
 
     </LinearLayout>

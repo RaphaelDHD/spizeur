@@ -1,0 +1,5 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/rectangle_dialog_box_change_transparent" />
+    <item android:drawable="@drawable/rectangle_dialog_box_change_background" />
+
+</layer-list>

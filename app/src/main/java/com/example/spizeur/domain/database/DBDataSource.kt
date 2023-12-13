@@ -25,6 +25,10 @@ object DBDataSource {
         SpizeurDataBase.getInstance().productDAO().deleteAllProducts()
     }
 
+    suspend fun setUserNewUsername(username: String)
+    {
+        SpizeurDataBase.getInstance().userDAO().setUserNewUsername(username)
+    }
 
 
 }

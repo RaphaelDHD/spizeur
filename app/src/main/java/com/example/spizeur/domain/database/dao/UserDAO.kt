@@ -24,5 +24,9 @@ interface UserDAO {
     @Query("Select * from User where email=:email limit 1")
     suspend fun getUserFromMail(email: String): User
 
+    @Query("UPDATE User SET username =:username WHERE Id = 1")
+    suspend fun setUserNewUsername(username: String)
 
+    @Query("UPDATE User SET email =:email WHERE Id = 1")
+    suspend fun setUserNewEmail(email: String)
 }

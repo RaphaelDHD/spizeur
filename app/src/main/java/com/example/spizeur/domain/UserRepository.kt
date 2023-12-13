@@ -2,7 +2,6 @@ package com.example.spizeur.domain
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 import com.example.spizeur.domain.database.DBDataSource
 import com.example.spizeur.models.User
 
@@ -50,4 +49,10 @@ object UserRepository {
         fun logout() {
 
         }
+
+        suspend fun setUserNewUsername(username: String)
+        {
+            return DBDataSource.setUserNewUsername(username)
+        }
+
 }
