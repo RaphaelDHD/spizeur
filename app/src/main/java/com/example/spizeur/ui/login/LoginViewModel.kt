@@ -62,6 +62,7 @@ class LoginViewModel: ViewModel() {
             _isConnected.postValue(true)
             viewModelScope.launch {
                 val user = UserRepository.getUser(email)
+                UserRepository.createOrderIfNoCurrent(user.userId!!)
                 _currentUser.postValue(user)
             }
         }
