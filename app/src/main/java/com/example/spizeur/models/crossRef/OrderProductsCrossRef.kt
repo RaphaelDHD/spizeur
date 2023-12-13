@@ -1,10 +1,9 @@
 package com.example.spizeur.models.crossRef
 
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 
-@Entity(primaryKeys = ["userId", "orderId"])
-data class UserOrderCrossRef(
+@Entity(primaryKeys = ["orderId", "productId"])
+data class OrderProductsCrossRef(
     val userId: Int,
     val orderId: Int
 )
