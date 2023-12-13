@@ -58,7 +58,6 @@ object UserRepository {
         val user = User(userId= Random.nextInt(0,100000),username = username, email = email, password = password)
         _currentUser.value = user
         createOrderIfNoCurrent(user.userId!!)
-        Log.d("userDuCu", currentUserOrder.value?.userCommandId.toString())
         DBDataSource.insertUser(user)
         }
 

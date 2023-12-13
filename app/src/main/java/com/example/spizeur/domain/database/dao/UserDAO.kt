@@ -26,7 +26,7 @@ interface UserDAO {
     @Query("Select * from User where email=:email limit 1")
     suspend fun getUserFromMail(email: String): User
 
-    @Query("UPDATE User SET username =:username WHERE Id = 1")
+    @Query("UPDATE User SET username =:username WHERE userId = 1")
     suspend fun setUserNewUsername(username: String)
     
     @Transaction
@@ -34,6 +34,6 @@ interface UserDAO {
     fun getUserOrderById(userId: Int): UserWithOrders
 
 
-    @Query("UPDATE User SET email =:email WHERE Id = 1")
+    @Query("UPDATE User SET email =:email WHERE userId = 1")
     suspend fun setUserNewEmail(email: String)
 }
