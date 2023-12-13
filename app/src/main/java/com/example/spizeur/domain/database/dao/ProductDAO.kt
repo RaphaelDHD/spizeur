@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.spizeur.models.Product
+import com.example.spizeur.models.User
 
 @Dao
 interface ProductDAO {
@@ -24,5 +25,9 @@ interface ProductDAO {
 
     @Query("SELECT * FROM Product WHERE title LIKE '%' || :searchQuery || '%'")
     suspend fun searchProduct(searchQuery: String): List<Product>
+
+    @Query("Select * from Product where productId =:id limit 1")
+    suspend fun getProductById(id: Int): Product
+
 
 }

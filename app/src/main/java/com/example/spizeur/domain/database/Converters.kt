@@ -1,8 +1,11 @@
 package com.example.spizeur.domain.database
 
 import androidx.room.TypeConverter
+import com.example.spizeur.domain.database.DBDataSource.getProductListByIds
 import com.example.spizeur.models.Address
 import com.example.spizeur.models.PaymentInformation
+import com.example.spizeur.models.Product
+import kotlinx.coroutines.runBlocking
 import java.util.Date
 
 class Converters {
@@ -77,6 +80,26 @@ class Converters {
     fun toImages(value: String): Array<String> {
         return value.split(",").toTypedArray()
     }
+
+    @TypeConverter
+    fun fromProductList(productList: List<Product>?): String? {
+        if (productList == null) {
+            return null
+        }
+        val productIds = productList.map { it.productId }
+        return productIds.joinToString(",")
+    }
+    @TypeConverter
+    fun toProductList(productIds: String?): List<Product>? {
+        if (productIds.isNullOrBlank()) {
+            return null
+        }
+        val productIdList = productIds.split(",").map { it.toInt() }
+        val productList = runBlocking {getProductListByIds(productIdList)}
+
+        return productList
+    }
+
 
 
 }
