@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "388292807402",
+    "project_id": "spizeur",
+    "storage_bucket": "spizeur.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388292807402:android:3cb43e3b2dce56a1552593",
+        "android_client_info": {
+          "package_name": "com.example.spizeur"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoYVxSVLBpu6aZM7e1EAZ4i0HwVi_77xc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
