@@ -9,8 +9,44 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listProductCart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="621dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:scrollbars="vertical"
         app:layoutManager="LinearLayoutManager" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/ClearCartButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Clear"
+            android:textColor="@color/md_theme_light_primary"
+            app:backgroundTint="@color/md_theme_light_secondaryContainer"
+            app:cornerRadius="6dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/CommandButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Command"
+            app:backgroundTint="@color/md_theme_light_primary"
+            app:cornerRadius="6dp" />
+
+    </LinearLayout>
 
 </FrameLayout>
