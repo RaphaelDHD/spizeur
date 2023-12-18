@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.spizeur.R
+import com.example.spizeur.domain.UserRepository
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -47,7 +48,9 @@ class SettingsActivity : AppCompatActivity() {
         validateButton.setOnClickListener {
             val newUsername = editText.text.toString()
 
-            viewModel.setUsername(newUsername)
+            UserRepository.currentUser.value?.userId?.let {id ->
+                viewModel.setUsername(newUsername, id)
+            }
 
             // TODO : Toast validation changement username ?
             dialog.dismiss()

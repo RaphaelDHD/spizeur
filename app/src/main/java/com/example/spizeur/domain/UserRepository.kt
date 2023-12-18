@@ -17,6 +17,9 @@ object UserRepository {
     private var _currentUser : MutableLiveData<User> = MutableLiveData<User>()
     val currentUser = _currentUser
 
+    fun setCurrentUser(user: User) {
+        _currentUser.postValue(user)
+    }
 
     suspend fun login(email: String, password: String): Boolean {
             val user = DBDataSource.getUser(email)
@@ -72,8 +75,9 @@ object UserRepository {
         }
     }
     
-    suspend fun setUserNewUsername(username: String){
-            return DBDataSource.setUserNewUsername(username)
+    suspend fun setUserNewUsername(username: String, userId: Int)
+    {
+        return DBDataSource.setUserNewUsername(username, userId)
     }
     
 

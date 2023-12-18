@@ -26,10 +26,16 @@ object DBDataSource {
         SpizeurDataBase.getInstance().productDAO().deleteAllProducts()
     }
 
-    suspend fun setUserNewUsername(username: String)
+    suspend fun setUserNewUsername(username: String, userId: Int)
     {
-        SpizeurDataBase.getInstance().userDAO().setUserNewUsername(username)
+        SpizeurDataBase.getInstance().userDAO().setUserNewUsername(username, userId)
     }
+
+    suspend fun setUserNewEmail(email: String, userId: Int)
+    {
+        SpizeurDataBase.getInstance().userDAO().setUserNewUsername(email, userId)
+    }
+
     suspend fun addOrder(order: Order) {
         SpizeurDataBase.getInstance().orderDAO().insertOrder(order)
     }

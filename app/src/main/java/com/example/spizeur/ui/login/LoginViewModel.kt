@@ -62,6 +62,7 @@ class LoginViewModel: ViewModel() {
             viewModelScope.launch {
                 val user = UserRepository.getUser(email)
                 UserRepository.createOrderIfNoCurrent(user.userId!!)
+                UserRepository.setCurrentUser(user)
                 _currentUser.postValue(user)
             }
         }

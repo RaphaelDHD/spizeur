@@ -9,6 +9,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.spizeur.R
 import com.example.spizeur.databinding.ActivityMainBinding
 import com.example.spizeur.ui.home.HomeViewModel
+import com.example.spizeur.ui.profile.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
