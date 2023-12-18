@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spizeur.R
 import com.example.spizeur.databinding.FragmentCartBinding
+import com.example.spizeur.domain.UserRepository
+import timber.log.Timber
 
 class CartFragment : Fragment() {
 

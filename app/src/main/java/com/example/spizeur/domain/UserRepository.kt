@@ -2,6 +2,7 @@ package com.example.spizeur.domain
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.spizeur.domain.database.DBDataSource
 import com.example.spizeur.models.Order
@@ -96,6 +97,12 @@ object UserRepository {
             currentUserOrder.value?.deliveryDate = Date(deliveryDateTimeMillis)
         }
         DBDataSource.insertOrder(currentUserOrder.value!!)
+    }
+
+    fun removeFromCart(position: Int): MutableList<Product> {
+        _currentUserOrder.value?.productList?.removeAt(position)
+
+        return _currentUserOrder.value?.productList!!
     }
 
 
