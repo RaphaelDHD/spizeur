@@ -38,6 +38,7 @@ class HomeViewModel: ViewModel() {
                     it.isSuccessful
                     it.body()?.productList
                     _productsLiveData.postValue(it)
+                    editDatabaseIfNeeded()
                 }
         }
     }

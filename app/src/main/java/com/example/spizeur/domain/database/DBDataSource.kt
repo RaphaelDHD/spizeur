@@ -42,7 +42,9 @@ object DBDataSource {
         return productList
     }
 
-
+    suspend fun insertOrder(value: Order) {
+        SpizeurDataBase.getInstance().orderDAO().insertOrder(value)
+    }
 
 
 }

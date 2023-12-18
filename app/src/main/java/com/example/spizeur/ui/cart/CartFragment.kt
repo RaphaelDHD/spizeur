@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,6 +37,11 @@ class CartFragment : Fragment() {
         recyclerView = root.findViewById(R.id.listProductCart)
         recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = CartAdapter(vm.getCartProducts())
+
+        val commandButton = root.findViewById<Button>(R.id.CommandButton)
+        commandButton.setOnClickListener {
+            vm.command()
+        }
 
         return root
     }

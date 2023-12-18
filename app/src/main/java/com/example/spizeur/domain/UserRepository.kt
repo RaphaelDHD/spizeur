@@ -2,11 +2,14 @@ package com.example.spizeur.domain
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.spizeur.domain.database.DBDataSource
 import com.example.spizeur.models.Order
 import com.example.spizeur.models.Product
 import com.example.spizeur.models.User
+import java.util.Date
+import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 
 object UserRepository {
@@ -79,8 +82,25 @@ object UserRepository {
 
     fun addToCart(product: Product) {
         _currentUserOrder.value?.productList?.add(product)
+        _currentUserOrder.value?.fullPrice = _currentUserOrder.value?.fullPrice?.plus(product.price)
     }
 
+    fun setCurrentUser(user: User) {
+        _currentUser.postValue(user)
+    }
+
+    suspend fun command() {
+        _currentUserOrder.value?.commandDate = Date()
+        if (currentUserOrder.value?.commandDate != null) {
+            val commandDateTimeMillis = currentUserOrder.value?.commandDate!!.time
+            val deliveryDateTimeMillis = commandDateTimeMillis + TimeUnit.DAYS.toMillis(5)
+            currentUserOrder.value?.deliveryDate = Date(deliveryDateTimeMillis)
+        }
+        currentUserOrder.value?.productList?.forEach {
+            Log.d("CACAPROUT", it.productId.toString())
+        }
+        DBDataSource.insertOrder(currentUserOrder.value!!)
+    }
 
 
 }

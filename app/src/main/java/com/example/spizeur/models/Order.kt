@@ -9,9 +9,9 @@ class Order(
     @PrimaryKey(autoGenerate = true) val orderId: Int? = null,
     val userCommandId: Int?,
     val productList: MutableList<Product> = mutableListOf<Product>(),
-    val quantity: Int = 0,
     var deliveryDate: Date?= null,
-    val commandDate: Date? = null,
-    val fullPrice: Double? = null,
-    val deliveryAddress: Address? = null
+    var commandDate: Date? = null,
+    var fullPrice: Double? = 0.0,
+    var deliveryAddress: Address? = null,
+    var paymentInformation: PaymentInformation? = null
     )
