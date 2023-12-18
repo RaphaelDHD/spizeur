@@ -37,4 +37,29 @@ class SettingsViewModel : ViewModel() {
         }
     }
 
+    fun setEmail(email: String, userId: Int)
+    {
+        viewModelScope.launch {
+            try {
+                UserRepository.setUserNewEmail(email, userId)
+
+                val oldUser: User? = UserRepository.currentUser.value
+                val newUser = User(
+                    username = oldUser!!.username,
+                    userId = oldUser?.userId,
+                    firstName = oldUser?.firstName,
+                    lastName = oldUser?.lastName,
+                    email = email,
+                    password = oldUser!!.password,
+                    birthDate = oldUser.birthDate,
+                    address = oldUser.address,
+                    paymentInformation = oldUser.paymentInformation
+                )
+                UserRepository.setCurrentUser(newUser)
+            } catch (error: Exception) {
+                Log.e("ERROR_SET_EMAIL", error.message.toString())
+            }
+        }
+    }
+
 }

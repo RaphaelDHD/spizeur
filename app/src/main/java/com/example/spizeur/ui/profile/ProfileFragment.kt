@@ -45,14 +45,17 @@ class ProfileFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
+        // TextView Username
         var currentUsername : String? = UserRepository.currentUser.value?.username
-
         if (currentUsername.isNullOrEmpty())
         {
             currentUsername = "USERNAME"
         }
-
         view?.findViewById<TextView>(R.id.profile_username)?.text = currentUsername
+
+        // TextView Email
+        view?.findViewById<TextView>(R.id.profile_email)?.text = UserRepository.currentUser.value?.email
+
     }
 
 

@@ -33,7 +33,7 @@ object DBDataSource {
 
     suspend fun setUserNewEmail(email: String, userId: Int)
     {
-        SpizeurDataBase.getInstance().userDAO().setUserNewUsername(email, userId)
+        SpizeurDataBase.getInstance().userDAO().setUserNewEmail(email, userId)
     }
 
     suspend fun addOrder(order: Order) {

@@ -79,6 +79,11 @@ object UserRepository {
     {
         return DBDataSource.setUserNewUsername(username, userId)
     }
+
+    suspend fun setUserNewEmail(email: String, userId: Int)
+    {
+        return DBDataSource.setUserNewEmail(email, userId)
+    }
     
 
     fun addToCart(product: Product) {
