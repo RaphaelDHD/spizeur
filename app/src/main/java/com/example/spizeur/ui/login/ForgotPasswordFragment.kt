@@ -1,21 +1,14 @@
 package com.example.spizeur.ui.login
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.FragmentManager
-import androidx.navigation.fragment.findNavController
 import com.example.spizeur.R
 import com.example.spizeur.databinding.FragmentForgotPasswordBinding
-import com.example.spizeur.databinding.FragmentLoginBinding
-import com.example.spizeur.ui.home.HomeActiviy
-import com.example.spizeur.ui.home.HomeViewModel
-import com.google.android.material.button.MaterialButton
 
 class ForgotPasswordFragment : Fragment() {
 

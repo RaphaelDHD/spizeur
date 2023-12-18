@@ -2,7 +2,6 @@ package com.example.spizeur.domain.database
 
 import com.example.spizeur.models.Order
 import com.example.spizeur.models.Product
-import com.example.spizeur.models.Products
 import com.example.spizeur.models.User
 
 object DBDataSource {

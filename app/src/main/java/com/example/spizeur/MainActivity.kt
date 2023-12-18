@@ -1,7 +1,6 @@
-package com.example.spizeur.ui.home
+package com.example.spizeur
 
 import android.os.Bundle
-import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
@@ -9,10 +8,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.spizeur.R
 import com.example.spizeur.databinding.ActivityMainBinding
+import com.example.spizeur.ui.home.HomeViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-class HomeActiviy : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val vm: HomeViewModel = HomeViewModel()

@@ -1,6 +1,5 @@
 package com.example.spizeur.domain
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.spizeur.domain.api.ApiClient
 import com.example.spizeur.domain.database.DBDataSource

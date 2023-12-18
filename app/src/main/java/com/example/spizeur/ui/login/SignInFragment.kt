@@ -1,6 +1,5 @@
 package com.example.spizeur.ui.login
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,16 +9,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.example.spizeur.R
 import com.example.spizeur.databinding.FragmentSignInBinding
-import com.example.spizeur.ui.home.HomeActiviy
-import com.example.spizeur.ui.home.HomeViewModel
+import com.example.spizeur.MainActivity
 import kotlinx.coroutines.launch
 
 class SignInFragment : Fragment() {
@@ -67,7 +63,7 @@ class SignInFragment : Fragment() {
         if (canCreateAccount) {
             val success = vm.createAccount(username, email, password, confirmPassword)
             if (success) {
-                val intent = Intent(requireContext(), HomeActiviy::class.java)
+                val intent = Intent(requireContext(), MainActivity::class.java)
                 startActivity(intent)
                 requireActivity().finish()
             } else {

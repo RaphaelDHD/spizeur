@@ -27,7 +27,7 @@
             android:label="@string/title_activity_product_info"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
-            android:name=".ui.home.HomeActiviy"
+            android:name=".MainActivity"
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
