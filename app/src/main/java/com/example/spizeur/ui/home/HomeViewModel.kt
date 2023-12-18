@@ -38,7 +38,6 @@ class HomeViewModel: ViewModel() {
                     it.isSuccessful
                     it.body()?.productList
                     _productsLiveData.postValue(it)
-                    editDatabaseIfNeeded()
                 }
         }
     }
@@ -61,11 +60,9 @@ class HomeViewModel: ViewModel() {
     }
 
 
-    private fun getAllProductsFromDatabase(): List<Product> {
+    suspend private fun getAllProductsFromDatabase(): List<Product> {
         var productList = listOf<Product>()
-        viewModelScope.launch {
-            productList = ProductsRepository.getAllProductsFromDatabase()
-        }
+        productList = ProductsRepository.getAllProductsFromDatabase()
         return productList
     }
 
@@ -79,7 +76,7 @@ class HomeViewModel: ViewModel() {
         }
     }
 
-    suspend fun updateDatabase(productsFromApi: List<Product>) {
+    private suspend fun updateDatabase(productsFromApi: List<Product>) {
         ProductsRepository.deleteAllProductsFromDatabase()
         ProductsRepository.addMultipleProductToDatabase(productsFromApi)
     }

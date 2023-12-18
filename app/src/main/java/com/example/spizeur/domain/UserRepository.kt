@@ -2,7 +2,6 @@ package com.example.spizeur.domain
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.spizeur.domain.database.DBDataSource
 import com.example.spizeur.models.Order
@@ -95,9 +94,6 @@ object UserRepository {
             val commandDateTimeMillis = currentUserOrder.value?.commandDate!!.time
             val deliveryDateTimeMillis = commandDateTimeMillis + TimeUnit.DAYS.toMillis(5)
             currentUserOrder.value?.deliveryDate = Date(deliveryDateTimeMillis)
-        }
-        currentUserOrder.value?.productList?.forEach {
-            Log.d("CACAPROUT", it.productId.toString())
         }
         DBDataSource.insertOrder(currentUserOrder.value!!)
     }

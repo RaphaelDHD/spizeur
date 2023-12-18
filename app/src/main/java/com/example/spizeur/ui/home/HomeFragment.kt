@@ -25,7 +25,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        vm = ViewModelProvider(this).get(HomeViewModel::class.java)
+        vm = ViewModelProvider(this.requireActivity())[HomeViewModel::class.java]
         vm.fetchProducts()
     }
 
@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
         vm.productsLiveData.observe(viewLifecycleOwner, Observer { response ->
             if (response != null && response.isSuccessful && response.body() != null) {
                 renderCategoryList()
-                // vm.editDatabaseIfNeeded()
+                vm.editDatabaseIfNeeded()
 
             } else {
                 Timber.e("Error fetching products")

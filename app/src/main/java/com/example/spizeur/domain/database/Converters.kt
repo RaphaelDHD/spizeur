@@ -86,7 +86,7 @@ class Converters {
         if (productList == null) {
             return null
         }
-        val productIds = productList.map { it.productId }
+        val productIds = productList.map { it.id }
         return productIds.joinToString(",")
     }
     @TypeConverter

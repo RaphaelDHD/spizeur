@@ -25,7 +25,7 @@ interface ProductDAO {
     @Query("SELECT * FROM Product WHERE title LIKE '%' || :searchQuery || '%'")
     suspend fun searchProduct(searchQuery: String): List<Product>
 
-    @Query("Select * from Product where productId =:id limit 1")
+    @Query("Select * from Product where id =:id limit 1")
     suspend fun getProductById(id: Int): Product
 
 
