@@ -86,6 +86,7 @@ class SettingsActivity : AppCompatActivity() {
                 UserRepository.currentUser.value?.userId?.let {id ->
                     viewModel.setEmail(editTextEmailValue, id)
                 }
+                UserRepository.registerUserToSharedPreferences(this, editTextEmailValue)
                 dialogBox.dismiss()
             }
         }
