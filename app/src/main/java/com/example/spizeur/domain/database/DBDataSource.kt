@@ -36,6 +36,11 @@ object DBDataSource {
         SpizeurDataBase.getInstance().userDAO().setUserNewEmail(email, userId)
     }
 
+    suspend fun setUserNewPassword(password: String, userId: Int)
+    {
+        SpizeurDataBase.getInstance().userDAO().setUserNewPassword(password, userId)
+    }
+
     suspend fun addOrder(order: Order) {
         SpizeurDataBase.getInstance().orderDAO().insertOrder(order)
     }

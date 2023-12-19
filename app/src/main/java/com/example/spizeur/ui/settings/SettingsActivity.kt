@@ -38,6 +38,10 @@ class SettingsActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.text_change_email)?.setOnClickListener {
             showModifyEmailDialogBox()
         }
+
+        findViewById<TextView>(R.id.text_change_password)?.setOnClickListener {
+            showModifyPasswordDialogBox()
+        }
     }
 
     private fun showModifyUsernameDialogBox() {
@@ -87,6 +91,51 @@ class SettingsActivity : AppCompatActivity() {
                     viewModel.setEmail(editTextEmailValue, id)
                 }
                 UserRepository.registerUserToSharedPreferences(this, editTextEmailValue)
+                dialogBox.dismiss()
+            }
+        }
+
+        cancelButton.setOnClickListener {
+            dialogBox.dismiss()
+        }
+
+        dialogBox.show()
+    }
+
+    private fun showModifyPasswordDialogBox() {
+        dialogBox.setContentView(R.layout.dialog_box_change_password)
+
+        val cancelButton = dialogBox.findViewById<Button>(R.id.dialog_button_password_cancel)
+        val validateButton = dialogBox.findViewById<Button>(R.id.dialog_button_password_validate)
+
+        val oldPasswordErrorTextView = dialogBox.findViewById<TextView>(R.id.dialog_old_password_error_message)
+        val confirmPasswordErrorTextView = dialogBox.findViewById<TextView>(R.id.dialog_confirm_new_password_error_message)
+
+        validateButton.setOnClickListener {
+            val oldPasswordInput = dialogBox.findViewById<EditText>(R.id.dialog_old_password_input).text.toString()
+            val newPasswordInput =  dialogBox.findViewById<EditText>(R.id.dialog_new_password_input).text.toString()
+            val confirmNewPasswordInput =  dialogBox.findViewById<EditText>(R.id.dialog_confirm_new_password_input).text.toString()
+
+            if (oldPasswordInput != UserRepository.currentUser.value?.password)
+            {
+                oldPasswordErrorTextView.visibility = View.VISIBLE
+                Toast.makeText(this, "The old password is not correct", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                oldPasswordErrorTextView.visibility = View.INVISIBLE
+            }
+
+            if (newPasswordInput != confirmNewPasswordInput || newPasswordInput.isNullOrEmpty())
+            {
+                confirmPasswordErrorTextView.visibility = View.VISIBLE
+                Toast.makeText(this, "Confirm password does not match the new password", Toast.LENGTH_SHORT).show()
+            }
+            else
+            {
+                confirmPasswordErrorTextView.visibility = View.INVISIBLE
+                UserRepository.currentUser.value?.userId?.let {id ->
+                    viewModel.setPassword(confirmNewPasswordInput, id)
+                }
                 dialogBox.dismiss()
             }
         }

@@ -31,11 +31,12 @@ interface UserDAO {
 
     @Query("UPDATE User SET email =:email WHERE userId =:userId")
     suspend fun setUserNewEmail(email: String, userId: Int)
+
+    @Query("UPDATE User SET password =:password WHERE userId =:userId")
+    suspend fun setUserNewPassword(password: String, userId: Int)
     
     @Transaction
     @Query("SELECT * FROM User where userId=:userId")
     fun getUserOrderById(userId: Int): UserWithOrders
 
-    @Query("UPDATE User SET email =:email WHERE userId = 1")
-    suspend fun setUserNewEmail(email: String)
 }
