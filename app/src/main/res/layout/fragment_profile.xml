@@ -36,8 +36,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/base_profile_pic"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-            android:clickable="true"
-            android:focusable="true"
             />
 
         <LinearLayout

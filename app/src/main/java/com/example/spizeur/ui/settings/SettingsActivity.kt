@@ -1,5 +1,6 @@
 package com.example.spizeur.ui.settings
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,12 +14,14 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.spizeur.R
 import com.example.spizeur.domain.UserRepository
+import com.google.android.material.imageview.ShapeableImageView
 
 class SettingsActivity : AppCompatActivity() {
 
     private lateinit var viewModel: SettingsViewModel
     private lateinit var dialogBox: Dialog
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dialogBox = Dialog(this)
@@ -41,6 +44,10 @@ class SettingsActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.text_change_password)?.setOnClickListener {
             showModifyPasswordDialogBox()
+        }
+
+        findViewById<TextView>(R.id.text_change_profile_pic)?.setOnClickListener {
+            // TODO : fonction profile pic avec autorisation
         }
     }
 
@@ -139,6 +146,20 @@ class SettingsActivity : AppCompatActivity() {
                 dialogBox.dismiss()
             }
         }
+
+        cancelButton.setOnClickListener {
+            dialogBox.dismiss()
+        }
+
+        dialogBox.show()
+    }
+
+    private fun showModifyProfilePicDialogBox() {
+        dialogBox.setContentView(R.layout.dialog_box_change_pic)
+
+        val cancelButton = dialogBox.findViewById<Button>(R.id.dialog_button_pic_cancel)
+
+        var currentImage = findViewById<ShapeableImageView>(R.id.dialog_box_pic_input)
 
         cancelButton.setOnClickListener {
             dialogBox.dismiss()
