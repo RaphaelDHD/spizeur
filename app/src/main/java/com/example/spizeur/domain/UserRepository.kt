@@ -49,12 +49,12 @@ object UserRepository {
     }
 
     suspend fun userExist(email: String): Boolean {
-            val User = DBDataSource.getUser(email)
-            if (User != null) {
-                return true
-            }
-            return false
+        val User = DBDataSource.getUser(email)
+        if (User != null) {
+            return true
         }
+        return false
+    }
 
 
     suspend fun createAccount(username: String, email: String, password: String) {
@@ -75,9 +75,21 @@ object UserRepository {
         }
     }
     
-    suspend fun setUserNewUsername(username: String){
-            return DBDataSource.setUserNewUsername(username)
+    suspend fun setUserNewUsername(username: String, userId: Int)
+    {
+        return DBDataSource.setUserNewUsername(username, userId)
     }
+
+    suspend fun setUserNewEmail(email: String, userId: Int)
+    {
+        return DBDataSource.setUserNewEmail(email, userId)
+    }
+
+    suspend fun setUserNewPassword(password: String, userId: Int)
+    {
+        return DBDataSource.setUserNewPassword(password, userId)
+    }
+
     
 
     fun addToCart(product: Product) {

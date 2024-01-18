@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.TextView
 import com.example.spizeur.R
 import com.example.spizeur.databinding.FragmentProfileBinding
+import com.example.spizeur.domain.UserRepository
 import com.example.spizeur.ui.settings.SettingsActivity
 
 class ProfileFragment : Fragment() {
@@ -37,5 +39,24 @@ class ProfileFragment : Fragment() {
             val intent = Intent(this.context, SettingsActivity::class.java)
             startActivity(intent)
         }
+
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        // TextView Username
+        var currentUsername : String? = UserRepository.currentUser.value?.username
+        if (currentUsername.isNullOrEmpty())
+        {
+            currentUsername = "USERNAME"
+        }
+        view?.findViewById<TextView>(R.id.profile_username)?.text = currentUsername
+
+        // TextView Email
+        view?.findViewById<TextView>(R.id.profile_email)?.text = UserRepository.currentUser.value?.email
+
+    }
+
+
 }
