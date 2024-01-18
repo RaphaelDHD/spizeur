@@ -4,4 +4,425 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.commandInfo.CommandInfoActivity"/>
+    tools:context=".ui.commandInfo.CommandInfoActivity">
+
+    <LinearLayout
+        android:id="@+id/settings_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/settings_return_arrow"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            android:contentDescription="@string/contentDescription_back_arrow"
+            android:focusable="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/back_return_arrow"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_header"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:id="@+id/InformationLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/AddressTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Address"
+                android:textSize="34sp" />
+
+            <RadioButton
+                android:id="@+id/YourAddressButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Your address"
+                android:textSize="18dp"/>
+
+            <RadioButton
+                android:id="@+id/OtherAddressButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Other Address"
+                android:textSize="18dp"
+                />
+
+            <LinearLayout
+                android:id="@+id/AddressContentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/AddressInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rectangle_text_input_background"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:contentDescription="Address"
+                        android:padding="8dp"
+                        android:src="@drawable/baseline_home_24" />
+
+                    <EditText
+                        android:id="@+id/address_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="emailAddress"
+                        android:background="@android:color/transparent"
+                        android:hint="Address"
+                        android:inputType="textEmailAddress"
+                        tools:ignore="labelFor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/PostalCodeInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rectangle_text_input_background"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:contentDescription="Address"
+                        android:padding="8dp"
+                        android:src="@drawable/mail_box" />
+
+                    <EditText
+                        android:id="@+id/postal_code_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="emailAddress"
+                        android:background="@android:color/transparent"
+                        android:hint="Postal code"
+                        android:inputType="textEmailAddress"
+                        tools:ignore="labelFor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/CityInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rectangle_text_input_background"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:contentDescription="City"
+                        android:padding="8dp"
+                        android:src="@drawable/location_city" />
+
+                    <EditText
+                        android:id="@+id/city_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="emailAddress"
+                        android:background="@android:color/transparent"
+                        android:hint="City"
+                        android:inputType="textEmailAddress"
+                        tools:ignore="labelFor" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RadioButton
+                android:id="@+id/PickupButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Pick-Up and go"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/PaymentInfoTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Payment Information"
+                android:textSize="34sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/RegisteredCardLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp">
+
+                <RadioButton
+                    android:id="@+id/RegisteredCardButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Registered card"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textSize="18dp"/>
+
+                <TextView
+                    android:id="@+id/RegisteredCardTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="35dp"
+                    android:text="****-****-****-1234"
+                    android:textColor="@color/md_theme_light_secondary"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <RadioButton
+                android:id="@+id/OtherCardButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Other card"
+                android:textSize="18dp"/>
+
+            <LinearLayout
+                android:id="@+id/CardContentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/NameCardInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rectangle_text_input_background"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:contentDescription="Name on card"
+                        android:padding="8dp"
+                        android:src="@drawable/person" />
+
+                    <EditText
+                        android:id="@+id/name_card_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="emailAddress"
+                        android:background="@android:color/transparent"
+                        android:hint="Name on card"
+                        android:inputType="textEmailAddress"
+                        tools:ignore="labelFor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/CardNumberInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rectangle_text_input_background"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:contentDescription="card number"
+                        android:padding="8dp"
+                        android:src="@drawable/credit_card" />
+
+                    <EditText
+                        android:id="@+id/card_number_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="emailAddress"
+                        android:background="@android:color/transparent"
+                        android:hint="Card number"
+                        android:inputType="textEmailAddress"
+                        tools:ignore="labelFor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ExpirationDateInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rectangle_text_input_background"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:contentDescription="Expiration date"
+                        android:padding="8dp"
+                        android:src="@drawable/calendar_month" />
+
+                    <EditText
+                        android:id="@+id/expiration_date_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="emailAddress"
+                        android:background="@android:color/transparent"
+                        android:hint="Expiration date"
+                        android:inputType="textEmailAddress"
+                        tools:ignore="labelFor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SecurityCodeInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rectangle_text_input_background"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:contentDescription="Security code"
+                        android:padding="8dp"
+                        android:src="@drawable/lock" />
+
+                    <EditText
+                        android:id="@+id/security_code_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="emailAddress"
+                        android:background="@android:color/transparent"
+                        android:hint="Security code"
+                        android:inputType="textEmailAddress"
+                        tools:ignore="labelFor" />
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp">
+
+                <TextView
+                    android:id="@+id/PriceWithoutShippingTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total excl. shipping cost : 1000.0 €"
+                    android:textColor="@color/md_theme_light_secondary"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/ShippingCostTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="shipping cost : 100.00 €"
+                    android:textColor="@color/md_theme_light_secondary"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/PriceWithoutShippingTextView" />
+
+                <TextView
+                    android:id="@+id/TotalCostTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Total : "
+                    android:textColor="@color/md_theme_light_secondary"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ShippingCostTextView"
+                    />
+
+                <TextView
+                    android:id="@+id/TotalCostNumberTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="1500.0 €"
+                    android:textColor="@color/md_theme_light_primary"
+                    android:textSize="24dp"
+                    app:layout_constraintStart_toEndOf="@+id/TotalCostTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/ShippingCostTextView"
+                    />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/CommandButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="Command"
+                    app:backgroundTint="@color/md_theme_light_primary"
+                    app:cornerRadius="6dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
