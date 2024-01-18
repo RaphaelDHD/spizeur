@@ -2,6 +2,7 @@ package com.example.spizeur.ui.settings
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
@@ -11,6 +12,9 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.spizeur.R
 import com.example.spizeur.domain.UserRepository
@@ -20,6 +24,16 @@ class SettingsActivity : AppCompatActivity() {
 
     private lateinit var viewModel: SettingsViewModel
     private lateinit var dialogBox: Dialog
+
+    private lateinit var permissionLauncher: ActivityResultLauncher<String>
+    private var readPermissionGranted = false
+
+
+    private fun requestMediaPermission()
+    {
+        readPermissionGranted = ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_GRANTED
+    }
+
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +61,11 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         findViewById<TextView>(R.id.text_change_profile_pic)?.setOnClickListener {
-            // TODO : fonction profile pic avec autorisation
+            permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
+            {   permission ->
+                readPermissionGranted = permission
+            }
+            requestMediaPermission()
         }
     }
 
