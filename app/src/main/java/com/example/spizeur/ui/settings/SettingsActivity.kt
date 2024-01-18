@@ -126,7 +126,6 @@ class SettingsActivity : AppCompatActivity() {
             if (oldPasswordInput != UserRepository.currentUser.value?.password)
             {
                 oldPasswordErrorTextView.visibility = View.VISIBLE
-                Toast.makeText(this, "The old password is not correct", Toast.LENGTH_SHORT).show()
             }
             else {
                 oldPasswordErrorTextView.visibility = View.INVISIBLE
@@ -135,7 +134,6 @@ class SettingsActivity : AppCompatActivity() {
             if (newPasswordInput != confirmNewPasswordInput || newPasswordInput.isNullOrEmpty())
             {
                 confirmPasswordErrorTextView.visibility = View.VISIBLE
-                Toast.makeText(this, "Confirm password does not match the new password", Toast.LENGTH_SHORT).show()
             }
             else
             {
