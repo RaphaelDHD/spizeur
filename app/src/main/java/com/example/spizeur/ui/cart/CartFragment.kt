@@ -1,6 +1,7 @@
 package com.example.spizeur.ui.cart
 
 import CartAdapter
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.spizeur.R
 import com.example.spizeur.databinding.FragmentCartBinding
 import com.example.spizeur.domain.UserRepository
+import com.example.spizeur.ui.commandInfo.CommandInfoActivity
+import com.example.spizeur.ui.settings.SettingsActivity
 import timber.log.Timber
 
 class CartFragment : Fragment() {
@@ -43,6 +46,8 @@ class CartFragment : Fragment() {
         val commandButton = root.findViewById<Button>(R.id.CommandButton)
         commandButton.setOnClickListener {
             vm.command()
+            val intent = Intent(this.context, CommandInfoActivity::class.java)
+            startActivity(intent)
         }
 
         return root
