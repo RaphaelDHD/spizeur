@@ -6,6 +6,8 @@ import com.example.spizeur.models.Address
 import com.example.spizeur.models.PaymentInformation
 import com.example.spizeur.models.Product
 import kotlinx.coroutines.runBlocking
+import java.text.ParseException
+import java.text.SimpleDateFormat
 import java.util.Date
 
 class Converters {
@@ -48,10 +50,11 @@ class Converters {
     @TypeConverter
     fun fromPaymentInformation(paymentInfo: PaymentInformation?): String {
         return paymentInfo?.let {
-            "${it.number},${it.expireDate},${it.code}"
+            val dateFormat = SimpleDateFormat("MM/yyyy")
+            val formattedDate = dateFormat.format(it.expireDate)
+            "${it.number},${formattedDate},${it.code},${it.name}"
         } ?: ""
     }
-
     @TypeConverter
     fun toPaymentInformation(value: String?): PaymentInformation? {
         if (value.isNullOrBlank() || value.equals("null", ignoreCase = true)) {
@@ -60,11 +63,14 @@ class Converters {
             val parts = value.split(",")
             return try {
                 PaymentInformation(
-                    number = parts.getOrElse(0) { "0" }?.toInt() ?: 0,
-                    expireDate = parts.getOrElse(1) { "" },
-                    code = parts.getOrElse(2) { "0" }?.toInt() ?: 0
+                    number = parts.getOrElse(0) { "0" } ?: "0",
+                    expireDate = SimpleDateFormat("MM/yyyy").parse(parts.getOrElse(1) { "" }) ?: Date(),
+                    code = parts.getOrElse(2) { "0" } ?: "0",
+                    name = parts.getOrElse(3) { "" }
                 )
             } catch (e: NumberFormatException) {
+                null
+            } catch (e: ParseException) {
                 null
             }
         }
