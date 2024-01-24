@@ -1,6 +1,7 @@
 package com.example.spizeur.ui.commandInfo
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,6 +11,7 @@ import android.widget.RadioButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.spizeur.MainActivity
 import com.example.spizeur.R
 import com.example.spizeur.models.Address
 import com.example.spizeur.models.PaymentInformation
@@ -73,6 +75,8 @@ class CommandInfoActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.CommandButton).setOnClickListener {
             command()
+            val intent = Intent(this@CommandInfoActivity, MainActivity::class.java)
+            startActivity(intent)
         }
 
 
