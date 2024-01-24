@@ -24,5 +24,16 @@ class CommandInfoViewModel : ViewModel()   {
         }
     }
 
+    fun getTotal() : Double {
+        val products = UserRepository.currentUserOrder.value?.productList
+        var total = 0.0
+        if (products != null) {
+            for (product in products) {
+                total += product.price
+            }
+        }
+        return total
+    }
+
 
 }

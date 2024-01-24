@@ -62,6 +62,15 @@ class CommandInfoActivity : AppCompatActivity() {
             findViewById<RadioButton>(R.id.OtherCardButton).isChecked = true
         }
 
+        // edit total text view
+        val total = vm.getTotal()
+        findViewById<TextView>(R.id.PriceWithoutShippingTextView).text = "Total excl. shipping cost : $total €"
+        val shippingCost = (total * 0.2).dec()
+        findViewById<TextView>(R.id.ShippingCostTextView).text = "Shipping cost : $shippingCost €"
+
+        findViewById<TextView>(R.id.TotalCostNumberTextView).text = "${total + shippingCost} €"
+
+
         findViewById<Button>(R.id.CommandButton).setOnClickListener {
             command()
         }
