@@ -36,21 +36,35 @@ class CartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentCartBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        val isCartEmpty = vm.isCartEmpty()
+        if (isCartEmpty) {
+            val layoutResourceId = R.layout.fragment_empty_cart
+            val rootView = inflater.inflate(layoutResourceId, container, false)
+            _binding = FragmentCartBinding.inflate(inflater, container, false)
+            return rootView
 
-        recyclerView = root.findViewById(R.id.listProductCart)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        recyclerView.adapter = CartAdapter(vm.getCartProducts())
-
-        val commandButton = root.findViewById<Button>(R.id.CommandButton)
-        commandButton.setOnClickListener {
-            vm.command()
-            val intent = Intent(this.context, CommandInfoActivity::class.java)
-            startActivity(intent)
+        }
+        
+        else {
+            val layoutResourceId = R.layout.fragment_cart
+            val rootView = inflater.inflate(layoutResourceId, container, false)
+            _binding = FragmentCartBinding.inflate(inflater, container, false)
+            recyclerView = rootView.findViewById(R.id.listProductCart)
+            recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            recyclerView.adapter = CartAdapter(vm.getCartProducts())
+            val commandButton = rootView.findViewById<Button>(R.id.CommandButton)
+            commandButton.setOnClickListener {
+                vm.command()
+                val intent = Intent(requireContext(), CommandInfoActivity::class.java)
+                startActivity(intent)
+            }
+            return rootView
         }
 
-        return root
+
+
+
+
     }
 
 }

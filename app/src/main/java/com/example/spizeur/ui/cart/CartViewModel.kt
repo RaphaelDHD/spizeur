@@ -16,4 +16,8 @@ class CartViewModel : ViewModel()   {
             UserRepository.command()
         }
     }
+
+    fun isCartEmpty(): Boolean {
+        return UserRepository.currentUserOrder.value?.productList?.isEmpty() ?: true
+    }
 }
