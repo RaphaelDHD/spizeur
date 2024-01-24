@@ -16,13 +16,13 @@ class CommandInfoViewModel : ViewModel()   {
         return UserRepository.currentUserOrder.value?.deliveryAddress
     }
 
-   /* fun command(address: Address, paymentInformation: PaymentInformation) {
+    fun command(address: Address, paymentInformation: PaymentInformation) {
         UserRepository.setCommandAddress(address)
         UserRepository.setCommandPaymentInformation(paymentInformation)
         viewModelScope.launch {
             UserRepository.command()
         }
     }
-*/
+
 
 }

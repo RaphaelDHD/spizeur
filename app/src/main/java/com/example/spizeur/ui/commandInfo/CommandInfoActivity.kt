@@ -1,13 +1,11 @@
 package com.example.spizeur.ui.commandInfo
 
-import android.app.DatePickerDialog
-import android.app.DatePickerDialog.OnDateSetListener
+
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
+import android.widget.Button
 import android.widget.EditText
-import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -17,10 +15,7 @@ import com.example.spizeur.models.Address
 import com.example.spizeur.models.PaymentInformation
 import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Locale
-
-
-
+import java.util.Date
 
 
 class CommandInfoActivity : AppCompatActivity() {
@@ -67,6 +62,10 @@ class CommandInfoActivity : AppCompatActivity() {
             findViewById<RadioButton>(R.id.OtherCardButton).isChecked = true
         }
 
+        findViewById<Button>(R.id.CommandButton).setOnClickListener {
+            command()
+        }
+
 
     }
 
@@ -76,7 +75,7 @@ class CommandInfoActivity : AppCompatActivity() {
         editText.setText(dateFormat.format(myCalendar.time))
     }
 
-    /*fun command() {
+    fun command() {
         var address = vm.getUserAddress()
         var paymentInfo = vm.getUserPaymentInfo()
         if (address != null && paymentInfo != null) {
@@ -93,7 +92,8 @@ class CommandInfoActivity : AppCompatActivity() {
 
         if (paymentInfo == null) {
             val cardNumber = findViewById<TextView>(R.id.card_number_input).text.toString()
-            val expireDate = findViewById<TextView>(R.id.expiration_date_input).text.toString()
+            val expireDateString = findViewById<TextView>(R.id.expiration_date_input).text.toString()
+            val expireDate = SimpleDateFormat("MM/yy").parse(expireDateString) ?: Date()
             val code = findViewById<TextView>(R.id.security_code_input).text.toString()
             val name = findViewById<TextView>(R.id.name_card_input).text.toString()
             paymentInfo = PaymentInformation(cardNumber, expireDate, code, name)
@@ -103,7 +103,7 @@ class CommandInfoActivity : AppCompatActivity() {
 
 
     }
-*/
+
 
 
 

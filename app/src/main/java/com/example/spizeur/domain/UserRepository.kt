@@ -5,7 +5,9 @@ import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.spizeur.domain.database.DBDataSource
+import com.example.spizeur.models.Address
 import com.example.spizeur.models.Order
+import com.example.spizeur.models.PaymentInformation
 import com.example.spizeur.models.Product
 import com.example.spizeur.models.User
 import java.util.Date
@@ -115,6 +117,14 @@ object UserRepository {
         _currentUserOrder.value?.productList?.removeAt(position)
 
         return _currentUserOrder.value?.productList!!
+    }
+
+    fun setCommandAddress(address: Address) {
+        _currentUserOrder.value?.deliveryAddress = address
+    }
+
+    fun setCommandPaymentInformation(paymentInformation: PaymentInformation) {
+        _currentUserOrder.value?.paymentInformation = paymentInformation
     }
 
 
