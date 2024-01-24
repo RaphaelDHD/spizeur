@@ -27,7 +27,7 @@ class Converters {
     @TypeConverter
     fun fromAddress(address: Address?): String {
         return address?.let {
-            "${it.address},${it.city},${it.postalCode},${it.supplement}"
+            "${it.address},${it.city},${it.postalCode}"
         } ?: ""
     }
 
@@ -41,7 +41,6 @@ class Converters {
                 address = parts.getOrElse(0) { "" },
                 city = parts.getOrElse(1) { "" },
                 postalCode = parts.getOrElse(2) { "" },
-                supplement = parts.getOrElse(3) { "" }
             )
         }
     }

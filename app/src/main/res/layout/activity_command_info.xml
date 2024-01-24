@@ -107,7 +107,7 @@
                         android:autofillHints="emailAddress"
                         android:background="@android:color/transparent"
                         android:hint="Address"
-                        android:inputType="textEmailAddress"
+                        android:inputType="textPostalAddress"
                         tools:ignore="labelFor" />
                 </LinearLayout>
 
@@ -137,7 +137,7 @@
                         android:autofillHints="emailAddress"
                         android:background="@android:color/transparent"
                         android:hint="Postal code"
-                        android:inputType="textEmailAddress"
+                        android:inputType="number"
                         tools:ignore="labelFor" />
                 </LinearLayout>
 
@@ -167,7 +167,7 @@
                         android:autofillHints="emailAddress"
                         android:background="@android:color/transparent"
                         android:hint="City"
-                        android:inputType="textEmailAddress"
+                        android:inputType="textPostalAddress"
                         tools:ignore="labelFor" />
                 </LinearLayout>
 
@@ -256,7 +256,7 @@
                         android:autofillHints="emailAddress"
                         android:background="@android:color/transparent"
                         android:hint="Name on card"
-                        android:inputType="textEmailAddress"
+                        android:inputType="textPersonName"
                         tools:ignore="labelFor" />
                 </LinearLayout>
 
@@ -286,7 +286,7 @@
                         android:autofillHints="emailAddress"
                         android:background="@android:color/transparent"
                         android:hint="Card number"
-                        android:inputType="textEmailAddress"
+                        android:inputType="number"
                         tools:ignore="labelFor" />
                 </LinearLayout>
 
@@ -316,7 +316,7 @@
                         android:autofillHints="emailAddress"
                         android:background="@android:color/transparent"
                         android:hint="Expiration date"
-                        android:inputType="textEmailAddress"
+                        android:inputType="date"
                         tools:ignore="labelFor" />
                 </LinearLayout>
 
@@ -346,7 +346,7 @@
                         android:autofillHints="emailAddress"
                         android:background="@android:color/transparent"
                         android:hint="Security code"
-                        android:inputType="textEmailAddress"
+                        android:inputType="number"
                         tools:ignore="labelFor" />
                 </LinearLayout>
 

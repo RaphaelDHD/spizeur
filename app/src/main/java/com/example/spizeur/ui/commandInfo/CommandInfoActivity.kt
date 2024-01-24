@@ -1,22 +1,51 @@
 package com.example.spizeur.ui.commandInfo
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
 import android.os.Bundle
-import android.provider.MediaStore.Audio.Radio
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
+import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.spizeur.R
-import com.example.spizeur.domain.UserRepository
-import com.example.spizeur.ui.cart.CartViewModel
+import com.example.spizeur.models.Address
+import com.example.spizeur.models.PaymentInformation
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+
+
+
+
 
 class CommandInfoActivity : AppCompatActivity() {
     private lateinit var vm: CommandInfoViewModel
-
+    val myCalendar: Calendar = Calendar.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_command_info)
         vm = ViewModelProvider(this).get(CommandInfoViewModel::class.java)
+
+        val editText = findViewById<EditText>(R.id.expiration_date_input)
+
+        editText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s?.length == 2 && !s.contains("/")) {
+                    s.insert(2, "/")
+                } else if (s?.length == 3 && s[2] != '/') {
+                    s.insert(2, "/")
+                }
+            }
+        })
 
         // address information
         val address = vm.getUserAddress()
@@ -40,6 +69,41 @@ class CommandInfoActivity : AppCompatActivity() {
 
 
     }
+
+    private fun updateLabel(editText: EditText) {
+        val myFormat = "MM/yy"
+        val dateFormat = SimpleDateFormat(myFormat)
+        editText.setText(dateFormat.format(myCalendar.time))
+    }
+
+    /*fun command() {
+        var address = vm.getUserAddress()
+        var paymentInfo = vm.getUserPaymentInfo()
+        if (address != null && paymentInfo != null) {
+            vm.command(address, paymentInfo)
+            return
+        }
+
+        if (address == null) {
+            val addressText = findViewById<TextView>(R.id.address_input).text.toString()
+            val postalCode = findViewById<TextView>(R.id.postal_code_input).text.toString()
+            val city = findViewById<TextView>(R.id.city_input).text.toString()
+            address = Address(addressText, city, postalCode)
+        }
+
+        if (paymentInfo == null) {
+            val cardNumber = findViewById<TextView>(R.id.card_number_input).text.toString()
+            val expireDate = findViewById<TextView>(R.id.expiration_date_input).text.toString()
+            val code = findViewById<TextView>(R.id.security_code_input).text.toString()
+            val name = findViewById<TextView>(R.id.name_card_input).text.toString()
+            paymentInfo = PaymentInformation(cardNumber, expireDate, code, name)
+        }
+
+        vm.command(address, paymentInfo)
+
+
+    }
+*/
 
 
 
