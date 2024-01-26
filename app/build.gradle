@@ -18,6 +18,24 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildFeatures {
+            buildConfig = true
+        }
+    }
+
+    flavorDimensions = ["env"]
+    productFlavors {
+        develop {
+            dimension "env"
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+            buildConfigField(
+                    "String", "popo", "\"API-KEY-DEV\""
+            )
+        }
+        tintin {
+            dimension "env"
+        }
     }
 
     buildTypes {
