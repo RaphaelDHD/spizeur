@@ -13,8 +13,8 @@ data class User(
     val email: String,
     val password: String,
     val birthDate: Date? = null,
-    val address: Address? = null,
-    val paymentInformation: PaymentInformation? = null
+    var address: Address? = null,
+    var paymentInformation: PaymentInformation? = null
     ) {
 
 }

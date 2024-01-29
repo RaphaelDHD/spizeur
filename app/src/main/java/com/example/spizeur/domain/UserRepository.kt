@@ -111,6 +111,7 @@ object UserRepository {
             currentUserOrder.value?.deliveryDate = Date(deliveryDateTimeMillis)
         }
         DBDataSource.insertOrder(currentUserOrder.value!!)
+        _currentUserOrder.postValue(Order(userCommandId = _currentUser.value?.userId))
     }
 
     fun removeFromCart(position: Int): MutableList<Product> {
@@ -121,10 +122,24 @@ object UserRepository {
 
     fun setCommandAddress(address: Address) {
         _currentUserOrder.value?.deliveryAddress = address
+        if (_currentUser.value?.address == null) {
+            var user = _currentUser?.value
+            user?.address = address
+            _currentUser.postValue(user!!)
+        }
     }
 
     fun setCommandPaymentInformation(paymentInformation: PaymentInformation) {
         _currentUserOrder.value?.paymentInformation = paymentInformation
+        if (_currentUser.value?.paymentInformation == null) {
+            var user = _currentUser?.value
+            user?.paymentInformation = paymentInformation
+            _currentUser.postValue(user!!)
+        }
+    }
+
+    suspend fun updateUser() {
+        DBDataSource.updateUser(_currentUser.value!!)
     }
 
 

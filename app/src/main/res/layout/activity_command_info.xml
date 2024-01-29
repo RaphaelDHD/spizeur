@@ -54,26 +54,51 @@
                 android:text="Address"
                 android:textSize="34sp" />
 
-            <RadioGroup
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/AddressConstraintLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp">
 
-                <RadioButton
-                    android:id="@+id/YourAddressButton"
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <RadioButton
+                        android:id="@+id/YourAddressButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Your address"
+                        android:textSize="18dp" />
+
+                    <RadioButton
+                        android:id="@+id/OtherAddressButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Other Address"
+                        android:textSize="18dp" />
+
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/AddressDetailTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="Your address"
-                    android:textSize="18dp" />
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="35dp"
+                    android:text="Addres sample"
+                    android:textColor="@color/md_theme_light_secondary"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/AddressConstraintLayout" />
 
-                <RadioButton
-                    android:id="@+id/OtherAddressButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="Other Address"
-                    android:textSize="18dp" />
-            </RadioGroup>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
                 android:id="@+id/AddressContentLayout"

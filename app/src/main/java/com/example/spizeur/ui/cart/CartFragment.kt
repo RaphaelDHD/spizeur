@@ -54,7 +54,6 @@ class CartFragment : Fragment() {
             recyclerView.adapter = CartAdapter(vm.getCartProducts())
             val commandButton = rootView.findViewById<Button>(R.id.CommandButton)
             commandButton.setOnClickListener {
-                vm.command()
                 val intent = Intent(requireContext(), CommandInfoActivity::class.java)
                 startActivity(intent)
             }
