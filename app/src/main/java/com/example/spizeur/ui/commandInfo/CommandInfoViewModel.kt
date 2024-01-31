@@ -9,17 +9,18 @@ import kotlinx.coroutines.launch
 
 class CommandInfoViewModel : ViewModel()   {
     fun getUserPaymentInfo(): PaymentInformation? {
-        return UserRepository.currentUserOrder.value?.paymentInformation
+        return UserRepository.currentUser.value?.paymentInformation
     }
 
     fun getUserAddress(): Address? {
-        return UserRepository.currentUserOrder.value?.deliveryAddress
+        return UserRepository.currentUser.value?.address
     }
 
     fun command(address: Address, paymentInformation: PaymentInformation) {
         UserRepository.setCommandAddress(address)
         UserRepository.setCommandPaymentInformation(paymentInformation)
         viewModelScope.launch {
+            UserRepository.updateUser()
             UserRepository.command()
         }
     }

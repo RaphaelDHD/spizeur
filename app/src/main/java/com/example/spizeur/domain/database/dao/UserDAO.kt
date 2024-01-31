@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
+import androidx.room.Update
 import com.example.spizeur.models.User
 import com.example.spizeur.models.crossRef.UserWithOrders
 
@@ -16,6 +17,9 @@ interface UserDAO {
 
     @Delete
     suspend fun deleteUser(user: User)
+
+    @Update
+    suspend fun updateUser(user: User)
 
     @Query("Select * from User where email=:email limit 1")
     suspend fun getUser(email: String): User

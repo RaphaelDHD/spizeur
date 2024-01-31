@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,8 @@ import com.example.spizeur.MainActivity
 import com.example.spizeur.R
 import com.example.spizeur.models.Address
 import com.example.spizeur.models.PaymentInformation
+import java.math.BigDecimal
+import java.math.RoundingMode
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -49,6 +52,10 @@ class CommandInfoActivity : AppCompatActivity() {
         if (address == null) {
             findViewById<RadioButton>(R.id.YourAddressButton).isEnabled = false
             findViewById<RadioButton>(R.id.OtherAddressButton).isChecked = true
+            findViewById<TextView>(R.id.AddressDetailTextView).text = "No address registered"
+        } else {
+            findViewById<RadioButton>(R.id.YourAddressButton).isChecked= true
+            findViewById<TextView>(R.id.AddressDetailTextView).text = address.address
         }
 
         // payment information
@@ -58,6 +65,7 @@ class CommandInfoActivity : AppCompatActivity() {
             val cardNumberLength = cardNumber.length
             val cardNumberLastFourDigits = cardNumber.substring(cardNumberLength - 4, cardNumberLength)
             findViewById<TextView>(R.id.RegisteredCardTextView).text = "**** **** **** $cardNumberLastFourDigits"
+            findViewById<RadioButton>(R.id.RegisteredCardButton).isChecked = true
         } else {
             findViewById<TextView>(R.id.RegisteredCardTextView).text = "No card registered"
             findViewById<RadioButton>(R.id.RegisteredCardButton).isEnabled = false
@@ -66,15 +74,21 @@ class CommandInfoActivity : AppCompatActivity() {
 
         // edit total text view
         val total = vm.getTotal()
-        findViewById<TextView>(R.id.PriceWithoutShippingTextView).text = "Total excl. shipping cost : $total €"
+        findViewById<TextView>(R.id.PriceWithoutShippingTextView).text = "Total excl. shipping cost : ${BigDecimal(total).setScale(2, RoundingMode.HALF_EVEN)} €"
         val shippingCost = (total * 0.2).dec()
-        findViewById<TextView>(R.id.ShippingCostTextView).text = "Shipping cost : $shippingCost €"
+        findViewById<TextView>(R.id.ShippingCostTextView).text = "Shipping cost : ${BigDecimal(shippingCost).setScale(2, RoundingMode.HALF_EVEN)} €"
 
-        findViewById<TextView>(R.id.TotalCostNumberTextView).text = "${total + shippingCost} €"
+        findViewById<TextView>(R.id.TotalCostNumberTextView).text = "${BigDecimal(total + shippingCost).setScale(2, RoundingMode.HALF_EVEN)} €"
 
 
         findViewById<Button>(R.id.CommandButton).setOnClickListener {
             command()
+            val intent = Intent(this@CommandInfoActivity, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        // add function to go back button
+        findViewById<ImageButton>(R.id.command_info_return_arrow).setOnClickListener {
             val intent = Intent(this@CommandInfoActivity, MainActivity::class.java)
             startActivity(intent)
         }
