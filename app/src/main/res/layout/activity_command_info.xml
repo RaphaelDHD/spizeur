@@ -14,13 +14,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/settings_return_arrow"
+        <ImageButton
+            android:id="@+id/command_info_return_arrow"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/md_theme_light_background"
             android:clickable="true"
             android:contentDescription="@string/contentDescription_back_arrow"
             android:focusable="true"

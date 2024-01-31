@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -82,6 +83,12 @@ class CommandInfoActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.CommandButton).setOnClickListener {
             command()
+            val intent = Intent(this@CommandInfoActivity, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        // add function to go back button
+        findViewById<ImageButton>(R.id.command_info_return_arrow).setOnClickListener {
             val intent = Intent(this@CommandInfoActivity, MainActivity::class.java)
             startActivity(intent)
         }
