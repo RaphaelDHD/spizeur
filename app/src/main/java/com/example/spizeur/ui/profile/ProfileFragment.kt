@@ -11,6 +11,7 @@ import android.widget.TextView
 import com.example.spizeur.R
 import com.example.spizeur.databinding.FragmentProfileBinding
 import com.example.spizeur.domain.UserRepository
+import com.example.spizeur.ui.login.LoginActivity
 import com.example.spizeur.ui.settings.SettingsActivity
 
 class ProfileFragment : Fragment() {
@@ -38,6 +39,14 @@ class ProfileFragment : Fragment() {
         view.findViewById<LinearLayout>(R.id.profile_settings_container)?.setOnClickListener {
             val intent = Intent(this.context, SettingsActivity::class.java)
             startActivity(intent)
+        }
+        view.findViewById<LinearLayout>(R.id.profile_logout_container)?.setOnClickListener {
+
+            UserRepository.disconnectUserFromSharedPreference(requireContext(), UserRepository.currentUser.value?.email!!)
+            UserRepository.logout()
+            val intent = Intent(this.context,LoginActivity::class.java)
+            startActivity(intent)
+
         }
 
     }
