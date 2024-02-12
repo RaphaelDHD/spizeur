@@ -2,6 +2,7 @@ package com.example.spizeur.ui.productInfo
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 
@@ -33,6 +34,10 @@ class ProductInfoActivity : AppCompatActivity() {
             UserRepository.addToCart(product!!)
             button.setText("Added !")
             button.setBackgroundColor(resources.getColor(R.color.md_theme_light_success))
+        }
+
+        findViewById<ImageButton>(R.id.command_info_back).setOnClickListener {
+            finish()
         }
 
 
