@@ -68,4 +68,8 @@ class LoginViewModel: ViewModel() {
         }
     }
 
+    fun registerUserToSharedPreferences(requireContext: Context, email: String) {
+        UserRepository.registerUserToSharedPreferences(requireContext, email)
+    }
+
 }

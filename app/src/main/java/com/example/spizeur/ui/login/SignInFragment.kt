@@ -63,6 +63,7 @@ class SignInFragment : Fragment() {
         if (canCreateAccount) {
             val success = vm.createAccount(username, email, password, confirmPassword)
             if (success) {
+                vm.registerUserToSharedPreferences(requireContext(), email)
                 val intent = Intent(requireContext(), MainActivity::class.java)
                 startActivity(intent)
                 requireActivity().finish()
