@@ -1,4 +1,5 @@
 <resources>
+    <string name="default_web_client_id">388292807402-ja9r6bq2if6tkfi0dm2cfjsobd320t4t.apps.googleusercontent.com</string>
     <string name="app_name">spizeur</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
