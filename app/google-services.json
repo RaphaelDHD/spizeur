@@ -12,7 +12,20 @@
           "package_name": "com.example.spizeur"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "388292807402-ipe650k0qjkc84mfbl5ar3a317soju0o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.spizeur",
+            "certificate_hash": "65ce2fc0ab6dd9ed7880a86baa6be66ec5981d1d"
+          }
+        },
+        {
+          "client_id": "388292807402-ja9r6bq2if6tkfi0dm2cfjsobd320t4t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDoYVxSVLBpu6aZM7e1EAZ4i0HwVi_77xc"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "388292807402-ja9r6bq2if6tkfi0dm2cfjsobd320t4t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     },
@@ -31,7 +49,12 @@
           "package_name": "com.example.spizeur.dev"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "388292807402-ja9r6bq2if6tkfi0dm2cfjsobd320t4t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDoYVxSVLBpu6aZM7e1EAZ4i0HwVi_77xc"
@@ -39,7 +62,41 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "388292807402-ja9r6bq2if6tkfi0dm2cfjsobd320t4t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388292807402:android:adf7dda29ed95694552593",
+        "android_client_info": {
+          "package_name": "com.example.spizeur.preproduction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "388292807402-ja9r6bq2if6tkfi0dm2cfjsobd320t4t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoYVxSVLBpu6aZM7e1EAZ4i0HwVi_77xc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "388292807402-ja9r6bq2if6tkfi0dm2cfjsobd320t4t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

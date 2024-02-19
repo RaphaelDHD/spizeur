@@ -29,13 +29,21 @@ android {
             dimension "env"
             applicationIdSuffix ".dev"
             versionNameSuffix "-dev"
-            buildConfigField(
-                    "String", "popo", "\"API-KEY-DEV\""
-            )
+            resValue "color", "md_theme_light_background", "#9ca4ff"
+            //resValue "drawable", "appIcon", "your_custom_icon"
         }
-        tintin {
+        preproduction {
             dimension "env"
+            applicationIdSuffix ".preproduction"
+            versionNameSuffix "-preproduction"
+            //resValue "drawable", "appIcon", "your_custom_icon"
+            // Customize preproduction if needed
         }
+        production {
+            dimension "env"
+            resValue "color", "primaryColor", "#005AC2"
+        }
+
     }
 
     buildTypes {
@@ -44,20 +52,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+
     kotlinOptions {
         jvmTarget = '17'
     }
+
     buildFeatures {
         viewBinding true
     }
 }
 
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.10.0'
@@ -95,8 +105,6 @@ dependencies {
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:$room_version")
 
-
-
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
@@ -117,9 +125,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation("com.google.firebase:firebase-crashlytics")
 
-
     // QR code
     implementation 'com.google.zxing:core:3.4.1'
-
-
 }
