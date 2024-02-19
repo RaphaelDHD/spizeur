@@ -88,7 +88,7 @@ class CommandInfoActivity : AppCompatActivity() {
         }
 
         // add function to go back button
-        findViewById<ImageButton>(R.id.command_info_return_arrow).setOnClickListener {
+        findViewById<ImageButton>(R.id.command_info_share).setOnClickListener {
             val intent = Intent(this@CommandInfoActivity, MainActivity::class.java)
             startActivity(intent)
         }

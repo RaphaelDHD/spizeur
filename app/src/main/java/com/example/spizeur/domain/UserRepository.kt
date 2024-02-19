@@ -16,10 +16,10 @@ import kotlin.random.Random
 
 object UserRepository {
 
-    private var _currentUserOrder : MutableLiveData<Order> = MutableLiveData<Order>()
+    private var _currentUserOrder : MutableLiveData<Order?> = MutableLiveData<Order?>()
     val currentUserOrder = _currentUserOrder
 
-    private var _currentUser : MutableLiveData<User> = MutableLiveData<User>()
+    private var _currentUser : MutableLiveData<User?> = MutableLiveData<User?>()
     val currentUser = _currentUser
 
 
@@ -41,6 +41,12 @@ object UserRepository {
         val sharedPreferences: SharedPreferences = context.getSharedPreferences("SpizeurSharedPreference", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("email", email)
+        editor.apply()
+    }
+    fun disconnectUserFromSharedPreference(context: Context, email: String) {
+        val sharedPreferences: SharedPreferences = context.getSharedPreferences("SpizeurSharedPreference", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.remove("email")
         editor.apply()
     }
 
@@ -67,7 +73,8 @@ object UserRepository {
         }
 
     fun logout() {
-
+        _currentUser.value = null
+        _currentUserOrder.value = null
     }
 
     fun createOrderIfNoCurrent(userId: Int) {
