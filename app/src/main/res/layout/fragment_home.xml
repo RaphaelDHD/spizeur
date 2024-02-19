@@ -8,7 +8,8 @@
     android:autofillHints="CategoryContainer"
     android:contentDescription="@string/categorycontainer_description"
     tools:context=".ui.home.HomeFragment"
-    android:background="@color/md_theme_light_background">
+    android:background="@color/md_theme_light_background"
+    >
 
     <!-- Nested scrollView pour les produits -->
     <androidx.core.widget.NestedScrollView

@@ -6,7 +6,8 @@
     android:layout_height="144dp"
     android:background="@drawable/frame_3"
     android:clipToOutline="true"
-    android:layout_marginLeft="32dp">
+    android:layout_marginLeft="32dp"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -12,5 +12,5 @@
     <corners
         android:radius="28dp"/>
 
-    <solid android:color="#F5F3F7" />
+    <solid android:color="@color/md_theme_light_secondaryContainer" />
 </shape>

@@ -11,10 +11,10 @@
             android:pathData="M15 0H114C122.284 0 129 6.71573 129 15V129C129 137.284 122.284 144 114 144H15C6.71573 144 0 137.284 0 129V15C0 6.71573 6.71573 0 15 0Z" />
         <path
             android:pathData="M0 0V144H129V0"
-            android:fillColor="#DBE2F9" />
+            android:fillColor="@color/md_theme_light_secondaryContainer" />
         <path
             android:pathData="M15 0H114C122.284 0 129 6.71573 129 15V129C129 137.284 122.284 144 114 144H15C6.71573 144 0 137.284 0 129V15C0 6.71573 6.71573 0 15 0Z"
             android:strokeWidth="1"
-            android:strokeColor="#75777F" />
+            android:strokeColor="@color/md_theme_light_outline" />
     </group>
 </vector>
