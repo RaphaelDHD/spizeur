@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity"
+    android:background="@color/md_theme_light_background">
 
-    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -33,8 +33,11 @@
             android:id="@+id/bottom_navigation_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/md_theme_light_primaryContainer"
             android:layout_gravity="bottom"
+            app:itemBackground="@color/md_theme_light_primaryContainer"
+            app:itemIconTint="@drawable/bottom_nav_color_selector"
+            app:itemTextColor="@drawable/bottom_nav_color_selector"
+            app:itemActiveIndicatorStyle="@color/md_theme_light_primaryContainer"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:menu="@menu/bottom_bar_navigation"

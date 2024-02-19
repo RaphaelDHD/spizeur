@@ -11,7 +11,7 @@
             />
         <path
             android:pathData="M0 0V268H288V0"
-            android:fillColor="#F5F3F7"
+            android:fillColor="@color/md_theme_light_secondaryContainer"
             />
     </group>
 </vector>

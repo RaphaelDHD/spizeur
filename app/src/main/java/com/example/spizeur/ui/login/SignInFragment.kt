@@ -9,10 +9,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.spizeur.R
 import com.example.spizeur.databinding.FragmentSignInBinding
 import com.example.spizeur.MainActivity
@@ -56,6 +58,12 @@ class SignInFragment : Fragment() {
                 createAccount(username, email, password, confirmPassword)
             }
         }
+
+        view.findViewById<TextView>(R.id.login_link)?.setOnClickListener {
+            val navController = findNavController()
+            navController.navigate(R.id.login_fragment_graph)
+        }
+
     }
 
     private suspend fun createAccount(username: String, email: String, password: String, confirmPassword: String) {

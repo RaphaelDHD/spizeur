@@ -24,15 +24,17 @@
 
     <ImageView
         android:id="@+id/iconImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="70dp"
-        android:src="@drawable/ic_launcher_foreground"
+        android:layout_marginTop="0dp"
         android:contentDescription="@string/contentDescription_spizeur_logo"
+        android:src="@mipmap/ic_launcher_foreground"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/md_theme_light_background"
         />
+
 
     <LinearLayout
         android:id="@+id/username_signin"
@@ -152,10 +154,26 @@
         android:layout_width="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="500dp"
         android:layout_gravity="center_horizontal"
         android:text="@string/create_account_button"
+        app:backgroundTint="@color/md_theme_light_primary"
         />
+
+    <TextView
+        android:id="@+id/login_link"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="600dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/already_have_account"
+        android:clickable="true"
+        android:focusable="true"
+        />
+
+
 
 </FrameLayout>
