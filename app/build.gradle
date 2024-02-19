@@ -30,18 +30,26 @@ android {
             applicationIdSuffix ".dev"
             versionNameSuffix "-dev"
             resValue "color", "md_theme_light_background", "#9ca4ff"
-            //resValue "drawable", "appIcon", "your_custom_icon"
+            manifestPlaceholders = [
+                    appIcon: "@mipmap/ic_launcher_alpha",
+                    appIconRound: "@mipmap/ic_launcher_alpha_round"
+            ]
         }
         preproduction {
             dimension "env"
             applicationIdSuffix ".preproduction"
             versionNameSuffix "-preproduction"
-            //resValue "drawable", "appIcon", "your_custom_icon"
-            // Customize preproduction if needed
+            manifestPlaceholders = [
+                    appIcon: "@mipmap/ic_launcher_beta",
+                    appIconRound: "@mipmap/ic_launcher_beta_round"
+            ]
         }
         production {
             dimension "env"
-            resValue "color", "primaryColor", "#005AC2"
+            manifestPlaceholders = [
+                    appIcon: "@mipmap/ic_launcher",
+                    appIconRound: "@mipmap/ic_launcher_round"
+            ]
         }
 
     }
