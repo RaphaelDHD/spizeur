@@ -16,11 +16,12 @@ L'objectif de cette application est de mettre en place une application semblable
 - Partager un produit via un QR Code
 
 ## Captures d'écrans
-![Screenshot_20240310-121705](https://github.com/RaphaelDHD/Spizeur/assets/117902859/c7136edf-998b-420e-bc24-99bb2c08715b)
-![Screenshot_20240310-121711](https://github.com/RaphaelDHD/Spizeur/assets/117902859/49220174-2357-4adc-9427-3e4efbf58985)
-![Screenshot_20240310-121716](https://github.com/RaphaelDHD/Spizeur/assets/117902859/d0437a82-2a77-4de7-8584-30a44d2be74d)
-![Screenshot_20240310-121720](https://github.com/RaphaelDHD/Spizeur/assets/117902859/211ba040-00db-4f74-91e7-44aec5a9631a)
-
+<div align="center">
+  <img src="https://github.com/RaphaelDHD/Spizeur/assets/117902859/c7136edf-998b-420e-bc24-99bb2c08715b" width="200"/>
+  <img src="https://github.com/RaphaelDHD/Spizeur/assets/117902859/49220174-2357-4adc-9427-3e4efbf58985" width="200"/>
+  <img src="https://github.com/RaphaelDHD/Spizeur/assets/117902859/d0437a82-2a77-4de7-8584-30a44d2be74d" width="200"/>
+  <img src="https://github.com/RaphaelDHD/Spizeur/assets/117902859/211ba040-00db-4f74-91e7-44aec5a9631a" width="200"/>
+</div>
 
 ## Installation
 L'Android Application Package (APK) est disponible sur le lien suivant : "https://app.bitrise.io/app/54e12d01-094f-4085-a284-29ac8400d131/build/2ddf0c71-aaac-4699-94bd-e57583a85ce0/artifact/3dbf807154a7a48e/p/f6bf8b1879163f0f371d4c3d9708ddbb"
