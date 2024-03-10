@@ -1,92 +1,35 @@
-# TAFA_DECHENAUD_Spizeur
+# Spizeur by Raphaël DECHENAUD et Rakel TAFA
 
+## Introduction
+Bienvenue sur notre projet Spizeur, une application de marketplace où vous pourrez acheter tout ce que vous souhaitez ! Cette application est un projet universitaire dans le cadre d'une troisième année d'études.
+Dans ce document, nous allons présenter tous les aspects essentiels de notre projet.
 
+## Description du projet
+L'objectif de cette application est de mettre en place une application semblable à un marketplace dans l'idée d'amazon, un endroit où l'on pourrait acheter tout types de produit.
 
-## Getting started
+## Fonctionnalités de l'application
+- Système de comptes avec création et connexion, sauvegarde de l'utilisateur dans l'application
+- Visualiser tous les produits disponibles trier par catégories dans une nestedScrollView
+- Visualiser un produit avec tous ces détails et les différentes images
+- Pouvoir ajouter au panier des articles
+- Sauvegarde des informations de paiements
+- Partager un produit via un QR Code
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## Captures d'écrans
+![Screenshot_20240310-121705](https://github.com/RaphaelDHD/Spizeur/assets/117902859/c7136edf-998b-420e-bc24-99bb2c08715b)
+![Screenshot_20240310-121711](https://github.com/RaphaelDHD/Spizeur/assets/117902859/49220174-2357-4adc-9427-3e4efbf58985)
+![Screenshot_20240310-121716](https://github.com/RaphaelDHD/Spizeur/assets/117902859/d0437a82-2a77-4de7-8584-30a44d2be74d)
+![Screenshot_20240310-121720](https://github.com/RaphaelDHD/Spizeur/assets/117902859/211ba040-00db-4f74-91e7-44aec5a9631a)
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://iutbg-gitlab.iutbourg.univ-lyon1.fr/p2104789/tafa_dechenaud_spizeur.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://iutbg-gitlab.iutbourg.univ-lyon1.fr/p2104789/tafa_dechenaud_spizeur/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+L'Android Application Package (APK) est disponible sur le lien suivant : "https://app.bitrise.io/app/54e12d01-094f-4085-a284-29ac8400d131/build/2ddf0c71-aaac-4699-94bd-e57583a85ce0/artifact/3dbf807154a7a48e/p/f6bf8b1879163f0f371d4c3d9708ddbb"
 
 ## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+Si vous rencontrez un problème avec notre application, un bug ou que vous trouvez une super idée de fonctionnalité, n'hésitez pas à créer une issue sur notre git !
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+## Auteurs et remerciement
+Nous sommes deux étudiants en troisième année d'étude de réalisation et développement d'application, nous sommes fiers d'avoir pu réaliser ce projet dans le cadre de nos études. Nous souhaitons aussi remercier les professeurs qui ont permis à ce projet d'exister et d'être ce qu'il est aujourd'hui !
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+## Statut actuel du projet
+Le projet est toujours en cours de développement et de nouvelles fonctionnalités seront ajouté prochainement !
