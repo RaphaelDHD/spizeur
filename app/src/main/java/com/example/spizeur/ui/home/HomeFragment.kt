@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.spizeur.R
 import com.example.spizeur.databinding.FragmentHomeBinding
 import com.example.spizeur.ui.adapter.CategoryAdapter
+import com.google.android.material.search.SearchBar
 import timber.log.Timber
 
 
@@ -22,6 +23,7 @@ class HomeFragment : Fragment() {
     private lateinit var vm: HomeViewModel
     private lateinit var parentRecyclerView: RecyclerView
     private lateinit var categoryAdapter: CategoryAdapter
+    private lateinit var searchBar: SearchBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +47,7 @@ class HomeFragment : Fragment() {
         categoryAdapter = CategoryAdapter()
         parentRecyclerView.adapter = categoryAdapter
 
-        setUpViews()
+        setUpViews(root)
         vm.productsLiveData.observe(viewLifecycleOwner, Observer { response ->
             if (response != null && response.isSuccessful && response.body() != null) {
                 renderCategoryList()
@@ -58,12 +60,15 @@ class HomeFragment : Fragment() {
         return root
     }
 
-    private fun setUpViews() {
+    private fun setUpViews(root: View) {
         parentRecyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         categoryAdapter = CategoryAdapter()
         parentRecyclerView.adapter = categoryAdapter
+        searchBar = root.findViewById(R.id.search_bar)
 
+
+        //searchBar.setOnQueryTextListener(this)
     }
 
     private fun renderCategoryList() {
