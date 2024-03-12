@@ -61,6 +61,8 @@ object DBDataSource {
         SpizeurDataBase.getInstance().orderDAO().updateOrder(value)
     }
 
-
+    suspend fun getOrderByUserId(userId: Int): Order {
+        return SpizeurDataBase.getInstance().orderDAO().getOrderByUserId(userId)
+    }
 
 }

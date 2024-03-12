@@ -79,11 +79,19 @@ object UserRepository {
 
     suspend fun createOrderIfNoCurrent(userId: Int) {
         if (_currentUserOrder.value == null) {
-            // set random number between 0 and 100000
-            val orderId = Random.nextInt(0, 100000)
-            val order = Order(orderId = orderId,userCommandId = userId)
-            _currentUserOrder.value = order
-            DBDataSource.insertOrder(order)
+            // check in database if there is an order for the user
+            // take the only order that has no deliveryDate
+            val order = DBDataSource.getOrderByUserId(userId)
+            if (order != null) {
+                _currentUserOrder.value = order
+            }
+            else {
+                // set random number between 0 and 100000
+                val orderId = Random.nextInt(0, 100000)
+                val order = Order(orderId = orderId,userCommandId = userId)
+                _currentUserOrder.value = order
+                DBDataSource.insertOrder(order)
+            }
         }
     }
     
