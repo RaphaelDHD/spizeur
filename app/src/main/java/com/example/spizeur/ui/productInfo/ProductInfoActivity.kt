@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.spizeur.R
 import com.example.spizeur.databinding.ActivityProductInfoBinding
 import com.example.spizeur.domain.UserRepository
@@ -18,6 +19,7 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.launch
 
 class ProductInfoActivity : AppCompatActivity() {
 
@@ -37,7 +39,9 @@ class ProductInfoActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.AddToCart)
 
         button.setOnClickListener {
-            UserRepository.addToCart(product!!)
+            lifecycleScope.launch {
+                UserRepository.addToCart(product!!)
+            }
             button.setText("Added !")
             button.setBackgroundColor(resources.getColor(R.color.md_theme_light_success))
         }

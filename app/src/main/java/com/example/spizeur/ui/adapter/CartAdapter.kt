@@ -14,6 +14,8 @@ import com.example.spizeur.domain.UserRepository
 import com.example.spizeur.models.Product
 import com.example.spizeur.ui.productInfo.ProductInfoActivity
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 open class CartAdapter(private val productList: List<Product>) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
 
@@ -42,7 +44,9 @@ open class CartAdapter(private val productList: List<Product>) : RecyclerView.Ad
             holder.itemView.context.startActivity(intent)
         }
         holder.delete.setOnClickListener {
-            UserRepository.removeFromCart(position)
+            GlobalScope.launch{
+                UserRepository.removeFromCart(position)
+            }
             notifyItemRemoved(position)
         }
 

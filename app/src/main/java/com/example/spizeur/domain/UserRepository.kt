@@ -77,10 +77,13 @@ object UserRepository {
         _currentUserOrder.value = null
     }
 
-    fun createOrderIfNoCurrent(userId: Int) {
+    suspend fun createOrderIfNoCurrent(userId: Int) {
         if (_currentUserOrder.value == null) {
-            val order = Order(userCommandId = userId)
+            // set random number between 0 and 100000
+            val orderId = Random.nextInt(0, 100000)
+            val order = Order(orderId = orderId,userCommandId = userId)
             _currentUserOrder.value = order
+            DBDataSource.insertOrder(order)
         }
     }
     
@@ -101,10 +104,18 @@ object UserRepository {
 
     
 
-    fun addToCart(product: Product) {
+    suspend fun addToCart(product: Product) {
         _currentUserOrder.value?.productList?.add(product)
         _currentUserOrder.value?.fullPrice = _currentUserOrder.value?.fullPrice?.plus(product.price)
+        saveCartToDB()
     }
+
+    suspend fun saveCartToDB() {
+        _currentUserOrder.value?.productList?.forEach {
+            DBDataSource.updateOrder(_currentUserOrder.value!!)
+        }
+    }
+
 
     fun setCurrentUser(user: User) {
         _currentUser.postValue(user)
@@ -117,13 +128,17 @@ object UserRepository {
             val deliveryDateTimeMillis = commandDateTimeMillis + TimeUnit.DAYS.toMillis(5)
             currentUserOrder.value?.deliveryDate = Date(deliveryDateTimeMillis)
         }
-        DBDataSource.insertOrder(currentUserOrder.value!!)
-        _currentUserOrder.postValue(Order(userCommandId = _currentUser.value?.userId))
+        DBDataSource.updateOrder(currentUserOrder.value!!)
+        // set random number between 0 and 100000
+        val orderId = Random.nextInt(0, 100000)
+        val order = Order(orderId = orderId,userCommandId = _currentUser.value?.userId)
+        _currentUserOrder.postValue(order)
+        DBDataSource.insertOrder(order)
     }
 
-    fun removeFromCart(position: Int): MutableList<Product> {
+    suspend fun removeFromCart(position: Int): MutableList<Product> {
         _currentUserOrder.value?.productList?.removeAt(position)
-
+        saveCartToDB()
         return _currentUserOrder.value?.productList!!
     }
 

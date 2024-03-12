@@ -45,11 +45,6 @@ object DBDataSource {
     {
         SpizeurDataBase.getInstance().userDAO().setUserNewPassword(password, userId)
     }
-
-    suspend fun addOrder(order: Order) {
-        SpizeurDataBase.getInstance().orderDAO().insertOrder(order)
-    }
-
     suspend fun getProductListByIds(listId: List<Int>): MutableList<Product> {
         val productList = mutableListOf<Product>()
         for (id in listId) {
@@ -61,6 +56,11 @@ object DBDataSource {
     suspend fun insertOrder(value: Order) {
         SpizeurDataBase.getInstance().orderDAO().insertOrder(value)
     }
+
+    suspend fun updateOrder(value: Order) {
+        SpizeurDataBase.getInstance().orderDAO().updateOrder(value)
+    }
+
 
 
 }
