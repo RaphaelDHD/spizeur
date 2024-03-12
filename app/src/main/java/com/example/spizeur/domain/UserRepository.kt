@@ -81,9 +81,12 @@ object UserRepository {
         if (_currentUserOrder.value == null) {
             // check in database if there is an order for the user
             // take the only order that has no deliveryDate
-            val order = DBDataSource.getOrderByUserId(userId)
-            if (order != null) {
-                _currentUserOrder.value = order
+            val orderInDB = DBDataSource.getOrderByUserId(userId)
+            if (orderInDB != null) {
+                _currentUserOrder.value = orderInDB
+                if (_currentUserOrder.value?.productList == null) {
+                    _currentUserOrder.value?.productList = mutableListOf<Product>()
+                }
             }
             else {
                 // set random number between 0 and 100000

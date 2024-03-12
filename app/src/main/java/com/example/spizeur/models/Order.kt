@@ -8,7 +8,7 @@ import java.util.Date
 class Order(
     @PrimaryKey(autoGenerate = true) val orderId: Int? = null,
     val userCommandId: Int?,
-    val productList: MutableList<Product> = mutableListOf<Product>(),
+    var productList: MutableList<Product>? = mutableListOf<Product>(),
     var deliveryDate: Date?= null,
     var commandDate: Date? = null,
     var fullPrice: Double? = 0.0,
