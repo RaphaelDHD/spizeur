@@ -71,7 +71,10 @@ class ProductInfoActivity : AppCompatActivity() {
         }
 
         findViewById<FloatingActionButton>(R.id.AddToFavorite).setOnClickListener() {
-            vm.onPressFavorite()
+            // start the coroutine
+            lifecycleScope.launch {
+                vm.onPressFavorite()
+            }
         }
 
         vm.isFavorite.observe(this) {

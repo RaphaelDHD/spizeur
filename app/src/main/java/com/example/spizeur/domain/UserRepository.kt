@@ -185,12 +185,14 @@ object UserRepository {
         return _currentUser.value?.favoriteProducts?.contains(id)!!
     }
 
-    fun addProductToFavorite(id: Int) {
+    suspend fun addProductToFavorite(id: Int) {
         _currentUser.value?.favoriteProducts?.add(id)
+        updateUser()
     }
 
-    fun removeProductFromFavorite(id: Int) {
+    suspend fun removeProductFromFavorite(id: Int) {
         _currentUser.value?.favoriteProducts?.remove(id)
+        updateUser()
     }
 
 

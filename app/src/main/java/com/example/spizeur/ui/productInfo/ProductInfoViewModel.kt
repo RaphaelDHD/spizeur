@@ -23,7 +23,7 @@ class ProductInfoViewModel : ViewModel() {
         )
     }
 
-    fun onPressFavorite() {
+    suspend fun onPressFavorite() {
         val product = getSelectedProduct()
         // if the product is already in the favorite list
         if (_isFavorite.value!!) {
