@@ -15,6 +15,7 @@ import com.example.spizeur.R
 import com.example.spizeur.databinding.ActivityProductInfoBinding
 import com.example.spizeur.domain.UserRepository
 import com.example.spizeur.models.Product
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
@@ -67,7 +68,9 @@ class ProductInfoActivity : AppCompatActivity() {
             dialog.show()
         }
 
-
+        findViewById<FloatingActionButton>(R.id.AddToFavorite).setOnClickListener() {
+            vm.onPressFavorite()
+        }
 
     }
 

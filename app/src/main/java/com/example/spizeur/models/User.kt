@@ -14,7 +14,8 @@ data class User(
     val password: String,
     val birthDate: Date? = null,
     var address: Address? = null,
-    var paymentInformation: PaymentInformation? = null
+    var paymentInformation: PaymentInformation? = null,
+    var favoriteProducts: MutableList<Int>? = mutableListOf<Int>(),
     ) {
 
 }

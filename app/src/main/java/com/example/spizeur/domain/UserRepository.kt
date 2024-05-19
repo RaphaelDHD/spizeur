@@ -10,6 +10,7 @@ import com.example.spizeur.models.Order
 import com.example.spizeur.models.PaymentInformation
 import com.example.spizeur.models.Product
 import com.example.spizeur.models.User
+import timber.log.Timber
 import java.util.Date
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
@@ -173,6 +174,18 @@ object UserRepository {
 
     suspend fun updateUser() {
         DBDataSource.updateUser(_currentUser.value!!)
+    }
+
+    fun isProductFavorite(id: Int): Boolean {
+        return _currentUser.value?.favoriteProducts?.contains(id)!!
+    }
+
+    fun addProductToFavorite(id: Int) {
+        _currentUser.value?.favoriteProducts?.add(id)
+    }
+
+    fun removeProductFromFavorite(id: Int) {
+        _currentUser.value?.favoriteProducts?.remove(id)
     }
 
 

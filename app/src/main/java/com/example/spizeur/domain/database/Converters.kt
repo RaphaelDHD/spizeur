@@ -105,6 +105,22 @@ class Converters {
         return productList
     }
 
+    @TypeConverter
+    fun fromIntList(intList: List<Int>?): String? {
+        if (intList == null) {
+            return null
+        }
+        return intList.joinToString(",")
+    }
+
+    @TypeConverter
+    fun toIntList(intList: String?): List<Int>? {
+        if (intList.isNullOrBlank()) {
+            return null
+        }
+        return intList.split(",").map { it.toInt() }
+    }
+
 
 
 }
