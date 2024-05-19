@@ -2,7 +2,6 @@ package com.example.spizeur.domain
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.spizeur.domain.database.DBDataSource
 import com.example.spizeur.models.Address
@@ -10,49 +9,52 @@ import com.example.spizeur.models.Order
 import com.example.spizeur.models.PaymentInformation
 import com.example.spizeur.models.Product
 import com.example.spizeur.models.User
-import timber.log.Timber
 import java.util.Date
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 
 object UserRepository {
 
-    private var _currentUserOrder : MutableLiveData<Order?> = MutableLiveData<Order?>()
+    private var _currentUserOrder: MutableLiveData<Order?> = MutableLiveData<Order?>()
     val currentUserOrder = _currentUserOrder
 
-    private var _currentUser : MutableLiveData<User?> = MutableLiveData<User?>()
+    private var _currentUser: MutableLiveData<User?> = MutableLiveData<User?>()
     val currentUser = _currentUser
 
 
     suspend fun login(email: String, password: String): Boolean {
-            val user = DBDataSource.getUser(email)
-            if (user.password == password) {
-                _currentUser.value = user
-                createOrderIfNoCurrent(user.userId!!)
-                return true
-            }
-            return false
+        val user = DBDataSource.getUser(email)
+        if (user.password == password) {
+            _currentUser.value = user
+            createOrderIfNoCurrent(user.userId!!)
+            return true
         }
+        return false
+    }
 
     suspend fun getUser(email: String): User {
         return DBDataSource.getUser(email)
     }
 
     fun registerUserToSharedPreferences(context: Context, email: String) {
-        val sharedPreferences: SharedPreferences = context.getSharedPreferences("SpizeurSharedPreference", Context.MODE_PRIVATE)
+        val sharedPreferences: SharedPreferences =
+            context.getSharedPreferences("SpizeurSharedPreference", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("email", email)
         editor.apply()
     }
+
     fun disconnectUserFromSharedPreference(context: Context, email: String) {
-        val sharedPreferences: SharedPreferences = context.getSharedPreferences("SpizeurSharedPreference", Context.MODE_PRIVATE)
+        val sharedPreferences: SharedPreferences =
+            context.getSharedPreferences("SpizeurSharedPreference", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.remove("email")
         editor.apply()
     }
 
     fun getUserFromSharedPreferences(context: Context): String? {
-        val sharedPreferences: SharedPreferences = context.getSharedPreferences("SpizeurSharedPreference", Context.MODE_PRIVATE)
+        val sharedPreferences: SharedPreferences =
+            context.getSharedPreferences("SpizeurSharedPreference", Context.MODE_PRIVATE)
         val email = sharedPreferences.getString("email", null)
         return email
     }
@@ -67,11 +69,16 @@ object UserRepository {
 
 
     suspend fun createAccount(username: String, email: String, password: String) {
-        val user = User(userId= Random.nextInt(0,100000),username = username, email = email, password = password)
+        val user = User(
+            userId = Random.nextInt(0, 100000),
+            username = username,
+            email = email,
+            password = password
+        )
         _currentUser.value = user
         createOrderIfNoCurrent(user.userId!!)
         DBDataSource.insertUser(user)
-        }
+    }
 
     fun logout() {
         _currentUser.value = null
@@ -88,33 +95,28 @@ object UserRepository {
                 if (_currentUserOrder.value?.productList == null) {
                     _currentUserOrder.value?.productList = mutableListOf<Product>()
                 }
-            }
-            else {
+            } else {
                 // set random number between 0 and 100000
                 val orderId = Random.nextInt(0, 100000)
-                val order = Order(orderId = orderId,userCommandId = userId)
+                val order = Order(orderId = orderId, userCommandId = userId)
                 _currentUserOrder.value = order
                 DBDataSource.insertOrder(order)
             }
         }
     }
-    
-    suspend fun setUserNewUsername(username: String, userId: Int)
-    {
+
+    suspend fun setUserNewUsername(username: String, userId: Int) {
         return DBDataSource.setUserNewUsername(username, userId)
     }
 
-    suspend fun setUserNewEmail(email: String, userId: Int)
-    {
+    suspend fun setUserNewEmail(email: String, userId: Int) {
         return DBDataSource.setUserNewEmail(email, userId)
     }
 
-    suspend fun setUserNewPassword(password: String, userId: Int)
-    {
+    suspend fun setUserNewPassword(password: String, userId: Int) {
         return DBDataSource.setUserNewPassword(password, userId)
     }
 
-    
 
     suspend fun addToCart(product: Product) {
         _currentUserOrder.value?.productList?.add(product)
@@ -143,7 +145,7 @@ object UserRepository {
         DBDataSource.updateOrder(currentUserOrder.value!!)
         // set random number between 0 and 100000
         val orderId = Random.nextInt(0, 100000)
-        val order = Order(orderId = orderId,userCommandId = _currentUser.value?.userId)
+        val order = Order(orderId = orderId, userCommandId = _currentUser.value?.userId)
         _currentUserOrder.postValue(order)
         DBDataSource.insertOrder(order)
     }
@@ -177,6 +179,9 @@ object UserRepository {
     }
 
     fun isProductFavorite(id: Int): Boolean {
+        if (_currentUser.value?.favoriteProducts == null) {
+            _currentUser.value?.favoriteProducts = mutableListOf<Int>()
+        }
         return _currentUser.value?.favoriteProducts?.contains(id)!!
     }
 

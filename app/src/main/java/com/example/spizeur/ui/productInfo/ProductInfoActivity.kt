@@ -35,6 +35,8 @@ class ProductInfoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val product = vm.getSelectedProduct()
+        vm.setInformation(product)
+        editFavorite(vm.isFavorite.value!!)
         setInformation(product)
 
         val button = findViewById<Button>(R.id.AddToCart)
@@ -72,9 +74,13 @@ class ProductInfoActivity : AppCompatActivity() {
             vm.onPressFavorite()
         }
 
+        vm.isFavorite.observe(this) {
+            editFavorite(it)
+        }
+
     }
 
-    fun setInformation(product : Product?) {
+    fun setInformation(product: Product?) {
         val title = binding.Title
         val price = binding.Price
         val brand = binding.Brand
@@ -123,5 +129,14 @@ class ProductInfoActivity : AppCompatActivity() {
         return null
     }
 
+    private fun editFavorite(isFavorite: Boolean) {
+        findViewById<FloatingActionButton>(R.id.AddToFavorite).setImageResource(
+            if (isFavorite) {
+                R.drawable.bookmark_fill
+            } else {
+                R.drawable.baseline_bookmark_border_24
+            }
+        )
+    }
 
 }

@@ -7,14 +7,20 @@ import com.example.spizeur.domain.ProductsRepository
 import com.example.spizeur.domain.UserRepository
 import com.example.spizeur.models.Product
 
-class ProductInfoViewModel: ViewModel() {
+class ProductInfoViewModel : ViewModel() {
 
 
-    private var _isFavorite: MutableLiveData<Boolean> = MutableLiveData<Boolean>(UserRepository.isProductFavorite(getSelectedProduct()!!.id))
+    private var _isFavorite: MutableLiveData<Boolean> = MutableLiveData<Boolean>(false)
     val isFavorite: LiveData<Boolean> = _isFavorite
 
     fun getSelectedProduct(): Product? {
         return ProductsRepository.selectedProduct.value
+    }
+
+    fun setInformation(product: Product?) {
+        _isFavorite.postValue(
+            UserRepository.isProductFavorite(product!!.id)
+        )
     }
 
     fun onPressFavorite() {
